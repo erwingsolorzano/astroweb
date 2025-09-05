@@ -16,7 +16,7 @@ export const generateSEOTags = (metadata: SEOMetadata) => {
     image = '/og-image.jpg',
     url,
     type = 'website',
-    author = 'Alex Rivera',
+    author = 'Erwing Solorzano',
   } = metadata;
 
   return {
@@ -28,7 +28,7 @@ export const generateSEOTags = (metadata: SEOMetadata) => {
       image,
       url,
       type,
-      siteName: 'Alex Rivera - Portfolio',
+      siteName: 'Erwing Solorzano - Portfolio',
     },
     twitter: {
       card: 'summary_large_image',
@@ -86,8 +86,8 @@ export const generateJSONLD = (type: 'Person' | 'WebSite', data: any) => {
 };
 
 export const defaultSEO: SEOMetadata = {
-  title: 'Alex Rivera - Frontend Engineer',
+  title: 'Erwing Solorzano - Frontend Engineer',
   description: 'Frontend Engineer especializado en React, TypeScript y experiencias web rápidas. Construyo aplicaciones que deleitan a usuarios y generan resultados.',
   image: '/og-image.jpg',
-  author: 'Alex Rivera',
+  author: 'Erwing Solorzano',
 };

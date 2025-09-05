@@ -5,7 +5,7 @@ import { events } from '../lib/analytics';
 import aboutData from '../content/about.json';
 
 const codeLines = [
-  "const portfolio = new Developer('Alex Rivera');",
+  "const portfolio = new Developer('Erwing Solorzano');",
   "portfolio.skills = ['React', 'TypeScript', 'Astro'];", 
   "if (portfolio.isAwesome()) { hire(portfolio); }",
   "function createMagic() { return innovation + passion; }",
@@ -61,7 +61,7 @@ export default function HeroAbout() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
         {/* Typewriter Background */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-mono text-green-500/25 blur-[1px] select-none h-12 sm:h-14 lg:h-16 xl:h-20 flex items-center max-w-full px-4 text-center leading-tight animate-pulse">
+          <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-mono text-green-500/25 blur-sm select-none h-12 sm:h-14 lg:h-16 xl:h-20 flex items-center max-w-full px-4 text-center leading-tight animate-pulse">
             {currentLine}
             <span className="animate-pulse text-green-400/60 ml-1">|</span>
           </div>

@@ -13,7 +13,7 @@ export default function Footer() {
           </div>
           
           <p className="text-green-100 font-mono flex items-center justify-center space-x-2">
-            <span>© {currentYear} Alex Rivera. Hecho con</span>
+            <span>© {currentYear} Erwing Solorzano. Hecho con</span>
             <Heart className="w-4 h-4 text-green-400 fill-current" />
             <span>y mucho café.</span>
           </p>
