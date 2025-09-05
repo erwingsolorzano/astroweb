@@ -1,0 +1,58 @@
+[
+  {
+    "name": "QuickSilver Claims",
+    "description": "Plataforma de gestión de siniestros que automatizó la importación de datos y mejoró la experiencia del usuario, reduciendo los tiempos de carga en un 60%.",
+    "impact": [
+      "+60% velocidad de carga",
+      "-80% errores de importación",
+      "15k+ usuarios activos"
+    ],
+    "stack": ["React", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS"],
+    "links": {
+      "demo": "https://quicksilver-demo.vercel.app",
+      "github": "https://github.com/alexrivera/quicksilver-claims"
+    },
+    "images": [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop"
+    ],
+    "featured": true
+  },
+  {
+    "name": "EcoTracker Dashboard",
+    "description": "Dashboard de análisis ambiental para empresas sostenibles con visualizaciones interactivas y reportes en tiempo real.",
+    "impact": [
+      "500+ empresas usuarias",
+      "Analytics en tiempo real",
+      "ROI 300% primer año"
+    ],
+    "stack": ["Next.js", "React", "D3.js", "Supabase", "Vercel"],
+    "links": {
+      "demo": "https://ecotracker-demo.vercel.app",
+      "github": "https://github.com/alexrivera/ecotracker"
+    },
+    "images": [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop"
+    ],
+    "featured": true
+  },
+  {
+    "name": "MinimalChat",
+    "description": "Aplicación de mensajería minimalista en tiempo real con enfoque en la privacidad y simplicidad de uso.",
+    "impact": [
+      "10k+ mensajes diarios",
+      "99.9% uptime",
+      "Cifrado extremo a extremo"
+    ],
+    "stack": ["Astro", "React", "Socket.io", "MongoDB"],
+    "links": {
+      "demo": "https://minimalchat-demo.vercel.app",
+      "github": "https://github.com/alexrivera/minimal-chat"
+    },
+    "images": [
+      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=400&fit=crop"
+    ],
+    "featured": false
+  }
+]

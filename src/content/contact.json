@@ -1,0 +1,26 @@
+{
+  "title": "Hablemos",
+  "description": "¿Tienes un proyecto interesante? Me encantaría conocer más detalles y ver cómo puedo ayudarte.",
+  "form": {
+    "name": {
+      "label": "Nombre",
+      "placeholder": "Tu nombre completo"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "tu@email.com"
+    },
+    "message": {
+      "label": "Mensaje",
+      "placeholder": "Cuéntame sobre tu proyecto o idea..."
+    },
+    "submit": "Enviar mensaje"
+  },
+  "alternative": {
+    "title": "Otras formas de contacto",
+    "email": "alex@ejemplo.com",
+    "copyEmailText": "Copiar email"
+  },
+  "success": "¡Mensaje enviado! Te responderé pronto.",
+  "error": "Hubo un error. Por favor, intenta de nuevo."
+}

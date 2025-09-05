@@ -1,0 +1,17 @@
+{
+  "name": "Alex Rivera",
+  "role": "Frontend Engineer",
+  "bio": "Construyo experiencias web rápidas y accesibles que deleitan a los usuarios y generan resultados medibles para las empresas.",
+  "bullets": [
+    "Optimicé Core Web Vitals 95+ en aplicaciones de producción",
+    "Experiencia en Astro, Next.js, React, TypeScript y Tailwind CSS",
+    "Especialista en rendimiento web y arquitecturas escalables"
+  ],
+  "links": {
+    "github": "https://github.com/alexrivera",
+    "linkedin": "https://www.linkedin.com/in/alexrivera",
+    "email": "alex@ejemplo.com",
+    "cvUrl": "/cv/alex-rivera-cv.pdf"
+  },
+  "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+}

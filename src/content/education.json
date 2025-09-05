@@ -1,0 +1,26 @@
+[
+  {
+    "institution": "Universidad Politécnica de Madrid",
+    "program": "Ingeniería en Informática",
+    "degree": "Grado",
+    "start": "2018",
+    "end": "2022",
+    "highlights": [
+      "Becario de Excelencia Académica (2020-2022)",
+      "Proyecto fin de carrera: 'Optimización de SPAs con React'",
+      "Promedio: 8.7/10"
+    ]
+  },
+  {
+    "institution": "Platzi",
+    "program": "Escuela de Desarrollo Web",
+    "degree": "Certificación",
+    "start": "2021",
+    "end": "2022",
+    "highlights": [
+      "Curso avanzado de React y Next.js",
+      "Especialización en TypeScript",
+      "Workshop de Web Performance"
+    ]
+  }
+]

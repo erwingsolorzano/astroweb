@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Home, ArrowLeft } from 'lucide-react';
+
+const seo = {
+  title: '404 - Página no encontrada | Alex Rivera',
+  description: 'La página que buscas no existe. Regresa al inicio para explorar mi portafolio.',
+};
+---
+
+<BaseLayout seo={seo}>
+  <div class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="mb-8">
+        <h1 class="text-9xl font-bold text-gray-200 dark:text-gray-800">404</h1>
+        <div class="text-6xl mb-4">🤷‍♂️</div>
+      </div>
+      
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        Página no encontrada
+      </h2>
+      
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
+        Lo siento, la página que buscas no existe. Es posible que haya sido movida o eliminada.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/"
+          class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+        >
+          <Home class="w-5 h-5 mr-2" />
+          Ir al inicio
+        </a>
+        
+        <button
+          onclick="history.back()"
+          class="inline-flex items-center px-6 py-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-colors"
+        >
+          <ArrowLeft class="w-5 h-5 mr-2" />
+          Volver atrás
+        </button>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
