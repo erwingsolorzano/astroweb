@@ -75,7 +75,7 @@ export default function HeroAbout() {
             />
             
             {/* Hover indicator */}
-            <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-20">
+            <div className="absolute -top-8 -right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-20">
               {/* Burbuja amarilla estilo Windows */}
               <div className="relative">
                 {/* Burbuja principal */}
@@ -99,25 +99,25 @@ export default function HeroAbout() {
                   </span>
                 </div>
                 
-                {/* Cola de la burbuja apuntando hacia abajo */}
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2">
+                {/* Cola de la burbuja apuntando hacia la izquierda */}
+                <div className="absolute top-1/2 right-full transform -translate-y-1/2">
                   {/* Borde de la cola */}
                   <div 
                     className="absolute w-0 h-0"
                     style={{
-                      borderLeft: '7px solid transparent',
-                      borderRight: '7px solid transparent',
-                      borderTop: '7px solid #000'
+                      borderTop: '7px solid transparent',
+                      borderBottom: '7px solid transparent',
+                      borderRight: '7px solid #000'
                     }}
                   ></div>
                   {/* Interior de la cola */}
                   <div 
                     className="relative w-0 h-0"
                     style={{
-                      borderLeft: '6px solid transparent',
-                      borderRight: '6px solid transparent',
-                      borderTop: '6px solid #ffff99',
-                      top: '-1px'
+                      borderTop: '6px solid transparent',
+                      borderBottom: '6px solid transparent',
+                      borderRight: '6px solid #ffff99',
+                      right: '-1px'
                     }}
                   ></div>
                 </div>
