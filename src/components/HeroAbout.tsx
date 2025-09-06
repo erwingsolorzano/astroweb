@@ -47,39 +47,6 @@ export default function HeroAbout() {
           className="space-y-6 sm:space-y-8 w-full"
         >
           {/* Click me indicator */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 2 }}
-            className="absolute -top-12 left-1/2 transform -translate-x-1/2 z-20"
-          >
-            <div className="relative">
-              {/* Animated arrow pointing down */}
-              <motion.div
-                animate={{ y: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-2 left-1/2 transform -translate-x-1/2"
-              >
-                <div className="w-0 h-0 border-l-4 border-r-4 border-t-6 border-transparent border-t-green-400"></div>
-              </motion.div>
-              
-              {/* Click me text */}
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.05, 1],
-                  textShadow: [
-                    '0 0 5px rgba(34, 197, 94, 0.5)',
-                    '0 0 10px rgba(34, 197, 94, 0.8)',
-                    '0 0 5px rgba(34, 197, 94, 0.5)'
-                  ]
-                }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="bg-gradient-to-r from-green-400 to-emerald-400 text-black px-3 py-1.5 rounded-lg font-mono text-xs sm:text-sm font-bold shadow-lg border border-green-400/50 whitespace-nowrap"
-              >
-                Click me! 👆
-              </motion.div>
-            </div>
-          </motion.div>
 
           {/* Avatar */}
           <motion.div
@@ -89,6 +56,53 @@ export default function HeroAbout() {
             className="relative mx-auto w-28 h-28 sm:w-32 sm:h-32 lg:w-40 lg:h-40 group cursor-pointer"
             onClick={handleAvatarClick}
           >
+            {/* Click me bubble indicator - sobrepuesto al avatar */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 2.5 }}
+              className="absolute top-2 right-2 z-30 pointer-events-none"
+            >
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  rotate: [0, 2, -2, 0]
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                className="relative"
+              >
+                {/* Burbuja principal */}
+                <div className="bg-white border-2 border-blue-600 rounded-full px-3 py-1.5 shadow-lg relative">
+                  {/* Texto retro estilo Windows */}
+                  <span 
+                    className="text-blue-600 font-bold text-xs whitespace-nowrap select-none"
+                    style={{
+                      fontFamily: 'MS Sans Serif, sans-serif',
+                      textShadow: '1px 1px 0px rgba(0,0,139,0.3)',
+                      letterSpacing: '0.5px'
+                    }}
+                  >
+                    CLICK ME!
+                  </span>
+                  
+                  {/* Cola de la burbuja */}
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2">
+                    <div className="w-0 h-0 border-l-3 border-r-3 border-t-4 border-transparent border-t-white"></div>
+                    <div className="absolute -top-0.5 left-1/2 transform -translate-x-1/2">
+                      <div className="w-0 h-0 border-l-2 border-r-2 border-t-3 border-transparent border-t-blue-600"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Efecto de brillo */}
+                <div className="absolute inset-0 bg-white/20 rounded-full animate-pulse"></div>
+              </motion.div>
+            </motion.div>
+
             {/* Modern glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-emerald-500 to-cyan-500 rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-all duration-500 animate-pulse"></div>
             
