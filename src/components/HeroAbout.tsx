@@ -4,48 +4,8 @@ import { Download, Mail, Github, Linkedin, X } from 'lucide-react';
 import { events } from '../lib/analytics';
 import aboutData from '../content/about.json';
 
-const codeLines = [
-  "const portfolio = new Developer('Erwing Solorzano');",
-  "portfolio.skills = ['React', 'TypeScript', 'Astro'];", 
-  "if (portfolio.isAwesome()) { hire(portfolio); }",
-  "function createMagic() { return innovation + passion; }",
-  "const future = await buildAmazingThings();",
-  "console.log('Welcome to the Matrix...');",
-  "class FrontendEngineer extends Developer {",
-  "  constructor() { super('creativity'); }",
-  "}",
-  "const experience = years.map(year => learning++);",
-  "export default AlexRivera;",
-];
-
 export default function HeroAbout() {
-  const [currentLine, setCurrentLine] = useState('');
-  const [lineIndex, setLineIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
   const [isAvatarExpanded, setIsAvatarExpanded] = useState(false);
-
-  useEffect(() => {
-    const typeSpeed = isDeleting ? 50 : 100;
-    const currentFullLine = codeLines[lineIndex];
-
-    const timeout = setTimeout(() => {
-      if (!isDeleting && charIndex < currentFullLine.length) {
-        setCurrentLine(currentFullLine.substring(0, charIndex + 1));
-        setCharIndex(charIndex + 1);
-      } else if (isDeleting && charIndex > 0) {
-        setCurrentLine(currentFullLine.substring(0, charIndex - 1));
-        setCharIndex(charIndex - 1);
-      } else if (!isDeleting && charIndex === currentFullLine.length) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && charIndex === 0) {
-        setIsDeleting(false);
-        setLineIndex((lineIndex + 1) % codeLines.length);
-      }
-    }, typeSpeed);
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, lineIndex]);
 
   const handleDownloadCV = () => {
     events.downloadCV();
@@ -67,19 +27,11 @@ export default function HeroAbout() {
   return (
     <div className="min-h-screen flex items-center justify-center pt-24 pb-16 bg-black relative overflow-hidden w-full">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative w-full">
-        {/* Typewriter Background */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-          <div className="text-lg sm:text-2xl lg:text-3xl xl:text-4xl font-mono text-green-500/25 blur-sm select-none h-8 sm:h-12 lg:h-14 xl:h-16 flex items-center w-full px-2 sm:px-4 text-center leading-tight animate-pulse break-all">
-            {currentLine}
-            <span className="animate-pulse text-green-400/60 ml-1">|</span>
-          </div>
-        </div>
-        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="space-y-6 sm:space-y-8 relative z-10 w-full"
+          className="space-y-6 sm:space-y-8 w-full"
         >
           {/* Avatar */}
           <motion.div
