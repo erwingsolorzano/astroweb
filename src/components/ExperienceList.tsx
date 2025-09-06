@@ -92,8 +92,6 @@ export default function ExperienceList() {
       newExpanded.delete(index);
     }
     
-    setExpandedJobs(newExpanded);
-
     // GSAP animation for expanding/collapsing
     const achievementsEl = document.querySelector(`#achievements-${index}`);
     const buttonEl = document.querySelector(`#expand-btn-${index}`);
@@ -101,17 +99,29 @@ export default function ExperienceList() {
 
     if (achievementsEl && buttonEl && iconEl) {
       if (isExpanding) {
+        // Update state first for expanding
+        setExpandedJobs(newExpanded);
+        
         // Expanding animation
-        gsap.set(achievementsEl, { height: 'auto' });
-        gsap.from(achievementsEl, {
-          height: 0,
-          opacity: 0,
-          duration: 0.6,
-          ease: "power3.out"
-        });
+        gsap.set(achievementsEl, { height: 'auto', display: 'block' });
+        gsap.fromTo(achievementsEl, 
+          {
+            height: 0,
+            opacity: 0
+          },
+          {
+            height: 'auto',
+            opacity: 1,
+            duration: 0.6,
+            ease: "power3.out"
+          }
+        );
         
         gsap.fromTo(achievementsEl.children,
-          { opacity: 0, y: 20 },
+          { 
+            opacity: 0, 
+            y: 20 
+          },
           { 
             opacity: 1, 
             y: 0, 
@@ -140,11 +150,34 @@ export default function ExperienceList() {
 
       } else {
         // Collapsing animation
+        gsap.to(achievementsEl.children, {
+          opacity: 0,
+          y: -10,
+          duration: 0.2,
+          stagger: 0.05,
+          ease: "power2.in"
+        });
+        
         gsap.to(achievementsEl, {
           height: 0,
           opacity: 0,
           duration: 0.4,
-          ease: "power3.in"
+          ease: "power3.in",
+          delay: 0.1,
+          onComplete: () => {
+            gsap.set(achievementsEl, { display: 'none' });
+            // Update state after animation completes
+            setExpandedJobs(newExpanded);
+          }
+        });
+
+        // Button effect
+        gsap.to(buttonEl, {
+          scale: 1.1,
+          duration: 0.1,
+          yoyo: true,
+          repeat: 1,
+          ease: "power2.inOut"
         });
 
         // Icon rotation back
@@ -236,7 +269,8 @@ export default function ExperienceList() {
             {/* Achievements - Hidden by default */}
             <div 
               id={`achievements-${index}`}
-              className={`overflow-hidden ${expandedJobs.has(index) ? 'block' : 'hidden'}`}
+              style={{ display: 'none' }}
+              className="overflow-hidden"
             >
               <div className="mb-4">
                 <div className="text-green-400 font-mono text-sm mb-3 flex items-center">
@@ -249,7 +283,7 @@ export default function ExperienceList() {
                       key={achievementIndex}
                       className="flex items-start space-x-3 text-green-200"
                     >
-                      <span className="text-green-400 font-mono text-sm mt-0.5"></span>
+                      <span className="text-green-400 font-mono text-sm mt-0.5">></span>
                       <span className="text-sm font-mono leading-relaxed">{achievement}</span>
                     </div>
                   ))}
