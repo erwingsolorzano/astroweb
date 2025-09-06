@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Image } from 'astro:assets';
 
 const navigation = [
   { name: 'Sobre mí', href: '#sobre-mi' },
@@ -90,10 +91,12 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center shadow-lg border border-green-400/50 hover:scale-110 transition-transform duration-300 cursor-pointer">
-              <span className="text-black font-bold text-lg font-mono">AR</span>
-            </div>
-          </div>
+          <img
+            src="./src/images/iconES.webp"
+            alt="Logo"
+            className="w-10 h-10 object-contain hover:scale-110 transition-transform duration-300 cursor-pointer"
+          />
+        </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">

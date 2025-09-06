@@ -181,7 +181,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps = {}) {
                 <div className="p-4 sm:p-6 space-y-3 sm:space-y-4 min-h-[100px] sm:min-h-[120px]">
                   {/* System Message */}
                   <div className="flex items-center space-x-2">
-                    <span className="text-green-400 font-mono text-sm">></span>
+                    <span className="text-green-400 font-mono text-sm"></span>
                     <span className="text-green-200 font-mono text-xs sm:text-sm break-words">
                       {currentMessage}
                       {!messageComplete && <span className="animate-pulse text-green-400">|</span>}
