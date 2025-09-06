@@ -195,12 +195,12 @@ export default function HeroAbout() {
                 y: { duration: 0.4 },
                 rotateX: { duration: 0.4 }
               }}
-              className="relative max-w-5xl w-full mx-auto"
+              className="relative max-w-4xl w-full mx-auto max-h-[90vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
               style={{ perspective: '1000px' }}
             >
               {/* Terminal Window */}
-              <div className="bg-gray-900 rounded-lg border-2 border-green-400/50 shadow-2xl shadow-green-400/20 overflow-hidden">
+              <div className="bg-gray-900 rounded-lg border-2 border-green-400/50 shadow-2xl shadow-green-400/20 overflow-hidden flex flex-col max-h-[90vh]">
                 {/* Terminal Header */}
                 <div className="flex items-center justify-between px-4 py-3 bg-green-400/10 border-b border-green-400/30">
                   <div className="flex items-center space-x-3">
@@ -220,7 +220,7 @@ export default function HeroAbout() {
                 </div>
 
                 {/* Terminal Content */}
-                <div className="p-4 sm:p-6 bg-black">
+                <div className="p-4 sm:p-6 bg-black flex-1 overflow-y-auto">
                   {/* Command Line */}
                   <div className="mb-3 sm:mb-4">
                     <div className="flex items-center space-x-2 text-green-400 font-mono text-sm mb-2">
@@ -230,9 +230,9 @@ export default function HeroAbout() {
                   </div>
 
                   {/* Profile Content */}
-                  <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
+                  <div className="flex flex-col lg:flex-row gap-6">
                     {/* Avatar Section */}
-                    <div className="lg:col-span-1 space-y-3 sm:space-y-4">
+                    <div className="lg:w-1/3 space-y-4">
                       <div className="relative">
                         {/* Matrix-style border effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-600/20 rounded-lg animate-pulse"></div>
@@ -240,13 +240,13 @@ export default function HeroAbout() {
                           <img
                             src={aboutData.avatar}
                             alt={aboutData.name}
-                            className="w-full aspect-square object-cover rounded-md max-w-xs mx-auto lg:max-w-none"
+                            className="w-full aspect-square object-cover rounded-md"
                           />
                         </div>
                       </div>
                       
                       {/* System Info */}
-                      <div className="space-y-1 sm:space-y-2 text-xs font-mono">
+                      <div className="space-y-2 text-xs font-mono">
                         <div className="flex justify-between text-green-300">
                           <span>STATUS:</span>
                           <span className="text-green-400">ONLINE</span>
@@ -258,26 +258,54 @@ export default function HeroAbout() {
                         <div className="flex justify-between text-green-300">
                           <span>MODE:</span>
                           <span className="text-green-400">DEVELOPER</span>
+                        </div>
+                      </div>
+                    </div>
+                    
                     {/* Info and Specs Section */}
-                    <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4 sm:gap-6">
-                      {/* Personal Info */}
-                      <div className="space-y-3 sm:space-y-4">
+                    <div className="lg:w-2/3 space-y-6">
                       {/* Header */}
-                        <div className="border-b border-green-400/30 pb-2 sm:pb-3">
-                          <h3 className="text-lg sm:text-xl font-bold font-mono text-green-400 mb-1">
+                      <div className="border-b border-green-400/30 pb-3">
+                        <h3 className="text-xl font-bold font-mono text-green-400 mb-1">
                           {aboutData.name}
-                          </h3>
-                          <p className="text-green-300 font-mono text-sm">
+                        </h3>
+                        <p className="text-green-300 font-mono text-sm">
                           {aboutData.role}
-                          </p>
+                        </p>
+                      </div>
+                      
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        {/* System Specs */}
+                        <div className="space-y-4">
+                          <div className="text-green-400 font-mono text-sm">
+                            SYSTEM SPECIFICATIONS:
+                          </div>
+                          <div className="space-y-2 text-xs font-mono text-green-200 leading-relaxed">
+                            <div className="flex items-center space-x-2">
+                              <span className="text-green-400">•</span>
+                              <span>Frontend Engineering: EXPERT</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <span className="text-green-400">•</span>
+                              <span>React/TypeScript: ADVANCED</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <span className="text-green-400">•</span>
+                              <span>Performance Optimization: HIGH</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <span className="text-green-400">•</span>
+                              <span>Coffee Consumption: MAXIMUM</span>
+                            </div>
+                          </div>
                         </div>
-                        </div>
+
                         {/* Connection Status */}
-                        <div className="space-y-2">
+                        <div className="space-y-4">
                           <div className="text-green-400 font-mono text-sm">
                             CONNECTION STATUS:
                           </div>
-                          <div className="space-y-1 text-xs font-mono">
+                          <div className="space-y-2 text-xs font-mono">
                             <div className="flex items-center space-x-2">
                               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                               <span className="text-green-200">GitHub: CONNECTED</span>
@@ -293,37 +321,11 @@ export default function HeroAbout() {
                           </div>
                         </div>
                       </div>
-
-                      {/* System Specs */}
-                      <div className="space-y-3 sm:space-y-4">
-                        <div className="text-green-400 font-mono text-sm">
-                          SYSTEM SPECIFICATIONS:
-                        </div>
-                        <div className="space-y-1 text-xs font-mono text-green-200 leading-relaxed">
-                          <div className="flex items-center space-x-2">
-                            <span className="text-green-400">•</span>
-                            <span>Frontend Engineering: EXPERT</span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <span className="text-green-400">•</span>
-                            <span>React/TypeScript: ADVANCED</span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <span className="text-green-400">•</span>
-                            <span>Performance Optimization: HIGH</span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <span className="text-green-400">•</span>
-                            <span>Coffee Consumption: MAXIMUM</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                     </div>
                   </div>
-                    </div>
+                  
                   {/* Terminal Footer */}
-                  <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-green-400/30">
+                  <div className="mt-6 pt-4 border-t border-green-400/30">
                     <div className="flex items-center space-x-2 text-green-400 font-mono text-xs">
                       <span>$</span>
                       <span className="animate-pulse">_</span>
