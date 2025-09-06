@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ExperienceList() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [expandedJobs, setExpandedJobs] = useState<Set<number>(new Set());
+  const [expandedJobs, setExpandedJobs] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -249,7 +249,7 @@ export default function ExperienceList() {
                       key={achievementIndex}
                       className="flex items-start space-x-3 text-green-200"
                     >
-                      <span className="text-green-400 font-mono text-sm mt-0.5"></span>
+                      <span className="text-green-400 font-mono text-sm mt-0.5">></span>
                       <span className="text-sm font-mono leading-relaxed">{achievement}</span>
                     </div>
                   ))}
