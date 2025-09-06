@@ -74,16 +74,17 @@ export default function Header() {
   };
 
   return (
-    <motion.header 
-      initial={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
-      animate={{ 
-        backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.98)' : 'rgba(0, 0, 0, 0)',
-        backdropFilter: isScrolled ? 'blur(20px)' : 'blur(0px)'
-      }}
-      transition={{ duration: 0.3 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'border-b border-green-400/20 shadow-2xl shadow-green-400/5' : 'border-b border-transparent'
+    <header 
+      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-black/98 backdrop-blur-xl border-b border-green-400/20 shadow-2xl shadow-green-400/5' 
+          : 'bg-transparent border-b border-transparent'
       }`}
+      style={{
+        transform: 'translate3d(0, 0, 0)',
+        backfaceVisibility: 'hidden',
+        perspective: '1000px'
+      }}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -127,7 +128,7 @@ export default function Header() {
         </div>
 
         {/* Mobile Navigation */}
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
@@ -155,6 +156,6 @@ export default function Header() {
           )}
         </AnimatePresence>
       </nav>
-    </motion.header>
+    </header>
   );
 }
