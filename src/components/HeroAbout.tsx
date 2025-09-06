@@ -61,7 +61,7 @@ export default function HeroAbout() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 2.5 }}
-              className="absolute top-1 -right-1 z-30 pointer-events-none"
+              className="absolute top-0 -right-2 z-30 pointer-events-none"
             >
               <motion.div
                 animate={{ 
@@ -76,18 +76,18 @@ export default function HeroAbout() {
                 className="relative"
               >
                 {/* Burbuja principal */}
-                <div className="bg-white border-2 border-blue-600 px-2 py-1 shadow-lg relative" style={{
+                <div className="bg-white border-2 border-blue-600 px-1.5 py-0.5 shadow-lg relative" style={{
                   clipPath: 'polygon(0 0, calc(100% - 3px) 0, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0 calc(100% - 3px), 0 3px)',
                   imageRendering: 'pixelated'
                 }}>
                   {/* Texto retro estilo Windows */}
                   <span 
-                    className="text-blue-800 font-bold text-xs whitespace-nowrap select-none"
+                    className="text-blue-900 font-bold text-xs whitespace-nowrap select-none"
                     style={{
                       fontFamily: 'MS Sans Serif, sans-serif',
-                      textShadow: '1px 1px 0px rgba(0,0,139,0.5)',
+                      textShadow: '1px 1px 0px rgba(0,0,139,0.7)',
                       letterSpacing: '0.3px',
-                      fontSize: '10px'
+                      fontSize: '9px'
                     }}
                   >
                     CLICK ME!
@@ -95,11 +95,11 @@ export default function HeroAbout() {
                   
                   {/* Cola de la burbuja */}
                   <div className="absolute -bottom-1 left-1/3 transform -translate-x-1/2">
-                    <div className="w-0 h-0 border-l-2 border-r-2 border-t-3 border-transparent border-t-white" style={{
+                    <div className="w-0 h-0 border-l-1.5 border-r-1.5 border-t-2.5 border-transparent border-t-white" style={{
                       imageRendering: 'pixelated'
                     }}></div>
                     <div className="absolute -top-0.5 left-1/2 transform -translate-x-1/2">
-                      <div className="w-0 h-0 border-l-1 border-r-1 border-t-2 border-transparent border-t-blue-800" style={{
+                      <div className="w-0 h-0 border-l-1 border-r-1 border-t-1.5 border-transparent border-t-blue-900" style={{
                         imageRendering: 'pixelated'
                       }}></div>
                     </div>
