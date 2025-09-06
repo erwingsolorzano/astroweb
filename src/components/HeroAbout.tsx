@@ -76,51 +76,25 @@ export default function HeroAbout() {
             
             {/* Hover indicator */}
             <div className="absolute -top-8 -right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-20">
-              {/* Burbuja amarilla estilo Windows */}
-              <div className="relative">
-                {/* Burbuja principal */}
-                <div 
-                  className="bg-yellow-100 border border-black px-3 py-2 shadow-lg relative whitespace-nowrap"
+              {/* Rectángulo simple estilo Windows */}
+              <div 
+                className="bg-yellow-100 border border-black px-2 py-1 shadow-lg whitespace-nowrap"
+                style={{
+                  background: 'linear-gradient(to bottom, #ffffcc 0%, #ffff99 100%)',
+                  border: '1px solid #000',
+                  boxShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+                  fontFamily: 'MS Sans Serif, Tahoma, sans-serif'
+                }}
+              >
+                <span 
+                  className="text-black font-normal select-none"
                   style={{
-                    background: 'linear-gradient(to bottom, #ffffcc 0%, #ffff99 100%)',
-                    border: '1px solid #000',
-                    boxShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-                    fontFamily: 'MS Sans Serif, Tahoma, sans-serif'
+                    fontSize: '13px',
+                    fontWeight: 'normal'
                   }}
                 >
-                  <span 
-                    className="text-black font-normal select-none"
-                    style={{
-                      fontSize: '11px',
-                      fontWeight: 'normal'
-                    }}
-                  >
-                    Click me
-                  </span>
-                </div>
-                
-                {/* Cola de la burbuja apuntando hacia la izquierda */}
-                <div className="absolute top-1/2 right-full transform -translate-y-1/2">
-                  {/* Borde de la cola */}
-                  <div 
-                    className="absolute w-0 h-0"
-                    style={{
-                      borderTop: '7px solid transparent',
-                      borderBottom: '7px solid transparent',
-                      borderRight: '7px solid #000'
-                    }}
-                  ></div>
-                  {/* Interior de la cola */}
-                  <div 
-                    className="relative w-0 h-0"
-                    style={{
-                      borderTop: '6px solid transparent',
-                      borderBottom: '6px solid transparent',
-                      borderRight: '6px solid #ffff99',
-                      right: '-1px'
-                    }}
-                  ></div>
-                </div>
+                  Click me
+                </span>
               </div>
             </div>
           </motion.div>
