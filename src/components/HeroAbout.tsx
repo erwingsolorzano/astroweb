@@ -19,11 +19,24 @@ export default function HeroAbout() {
 
   const handleAvatarClick = () => {
     setIsAvatarExpanded(true);
+    // Bloquear scroll de la página
+    document.body.style.overflow = 'hidden';
   };
 
   const handleCloseAvatar = () => {
     setIsAvatarExpanded(false);
+    // Restaurar scroll de la página
+    document.body.style.overflow = 'unset';
   };
+
+  // Cleanup: restaurar scroll si el componente se desmonta con modal abierto
+  useEffect(() => {
+    return () => {
+      if (isAvatarExpanded) {
+        document.body.style.overflow = 'unset';
+      }
+    };
+  }, [isAvatarExpanded]);
   return (
     <div className="min-h-screen flex items-center justify-center pt-24 pb-16 bg-black relative overflow-hidden w-full">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative w-full">
