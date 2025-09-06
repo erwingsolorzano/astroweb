@@ -123,7 +123,7 @@ export default function ExperienceList() {
                       transition={{ duration: 0.2, delay: achievementIndex * 0.05 }}
                       className="flex items-start space-x-3 text-green-200"
                     >
-                      <span className="text-green-400 font-mono text-sm mt-0.5">></span>
+                      <span className="text-green-400 font-mono text-sm mt-0.5"></span>
                       <span className="text-sm font-mono leading-relaxed">{achievement}</span>
                     </motion.div>
                   ))}
