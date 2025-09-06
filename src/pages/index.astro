@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header';
 import HeroAbout from '../components/HeroAbout';
 import EducationList from '../components/EducationList';
+import ExperienceList from '../components/ExperienceList';
 import ProjectsGrid from '../components/ProjectsGrid';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
@@ -18,6 +19,16 @@ import Section from '../components/Section';
     <section id="sobre-mi" class="scroll-mt-20">
       <HeroAbout client:load />
     </section>
+    
+    <!-- Experience Section -->
+    <Section 
+      id="experiencia" 
+      title="Experiencia" 
+      subtitle="Mi trayectoria profesional y logros destacados"
+      className="bg-gradient-to-br from-black via-green-950/20 to-gray-900"
+    >
+      <ExperienceList client:load />
+    </Section>
     
     <!-- Education Section -->
     <Section 

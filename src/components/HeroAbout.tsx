@@ -81,10 +81,10 @@ export default function HeroAbout() {
             className="relative mx-auto w-32 h-32 lg:w-40 lg:h-40 group"
           >
             {/* Glow effect */}
-            <div className="absolute inset-0 bg-green-400 rounded-full blur-md opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 rounded-full blur-md opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
             {/* Terminal-style border */}
-            <div className="absolute inset-0 rounded-full border-2 border-green-400 opacity-60"></div>
-            <div className="absolute inset-1 rounded-full border border-green-400/40"></div>
+            <div className="absolute inset-0 rounded-full border-2 border-amber-400 opacity-60"></div>
+            <div className="absolute inset-1 rounded-full border border-orange-400/40"></div>
             <img
               src={aboutData.avatar}
               alt={aboutData.name}
@@ -92,10 +92,10 @@ export default function HeroAbout() {
               loading="eager"
             />
             {/* Corner brackets like terminal */}
-            <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-green-400 opacity-80"></div>
-            <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-green-400 opacity-80"></div>
-            <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-green-400 opacity-80"></div>
-            <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-green-400 opacity-80"></div>
+            <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-amber-400 opacity-80"></div>
+            <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-amber-400 opacity-80"></div>
+            <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-amber-400 opacity-80"></div>
+            <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-amber-400 opacity-80"></div>
           </motion.div>
 
           {/* Name and Role */}

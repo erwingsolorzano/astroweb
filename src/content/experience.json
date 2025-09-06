@@ -1,0 +1,50 @@
+[
+  {
+    "company": "Tech Solutions Inc.",
+    "position": "Senior Frontend Developer",
+    "type": "Tiempo completo",
+    "location": "Remoto",
+    "start": "2022",
+    "end": "Presente",
+    "description": "Lidero el desarrollo de aplicaciones web modernas utilizando React, TypeScript y tecnologías de vanguardia.",
+    "achievements": [
+      "Mejoré el rendimiento de la aplicación principal en un 60%",
+      "Implementé arquitectura de microfrontends para 3 equipos",
+      "Mentoré a 5 desarrolladores junior en mejores prácticas",
+      "Reduje el tiempo de carga inicial de 8s a 2.3s"
+    ],
+    "technologies": ["React", "TypeScript", "Next.js", "Tailwind CSS", "GraphQL", "AWS"]
+  },
+  {
+    "company": "Digital Agency Pro",
+    "position": "Frontend Developer",
+    "type": "Tiempo completo",
+    "location": "Híbrido",
+    "start": "2020",
+    "end": "2022",
+    "description": "Desarrollé sitios web y aplicaciones para clientes de diversos sectores, enfocándome en experiencia de usuario y rendimiento.",
+    "achievements": [
+      "Entregué +15 proyectos web con 98% satisfacción del cliente",
+      "Implementé sistema de design tokens reutilizable",
+      "Optimicé SEO logrando +40% tráfico orgánico promedio",
+      "Colaboré con equipos de UX/UI en 20+ proyectos"
+    ],
+    "technologies": ["JavaScript", "React", "Vue.js", "SCSS", "WordPress", "Figma"]
+  },
+  {
+    "company": "StartupXYZ",
+    "position": "Junior Frontend Developer",
+    "type": "Tiempo completo",
+    "location": "Presencial",
+    "start": "2019",
+    "end": "2020",
+    "description": "Mi primera experiencia profesional donde aprendí las bases del desarrollo frontend moderno y metodologías ágiles.",
+    "achievements": [
+      "Desarrollé 3 landing pages que generaron +500 leads",
+      "Implementé responsive design en toda la plataforma",
+      "Participé en daily standups y sprints de 2 semanas",
+      "Aprendí Git, testing y deployment automatizado"
+    ],
+    "technologies": ["HTML5", "CSS3", "JavaScript", "Bootstrap", "jQuery", "Git"]
+  }
+]

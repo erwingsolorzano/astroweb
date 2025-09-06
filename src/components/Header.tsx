@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navigation = [
   { name: 'Sobre mí', href: '#sobre-mi' },
+  { name: 'Experiencia', href: '#experiencia' },
   { name: 'Educación', href: '#educacion' },
   { name: 'Proyectos', href: '#proyectos' },
   { name: 'Contacto', href: '#contacto' },
@@ -11,6 +12,7 @@ const navigation = [
 
 const navigationEn = [
   { name: 'About', href: '#sobre-mi' },
+  { name: 'Experience', href: '#experiencia' },
   { name: 'Education', href: '#educacion' },
   { name: 'Projects', href: '#proyectos' },
   { name: 'Contact', href: '#contacto' },
@@ -75,12 +77,12 @@ export default function Header() {
     <motion.header 
       initial={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
       animate={{ 
-        backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.95)' : 'rgba(0, 0, 0, 0)',
+        backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.98)' : 'rgba(0, 0, 0, 0)',
         backdropFilter: isScrolled ? 'blur(20px)' : 'blur(0px)'
       }}
       transition={{ duration: 0.3 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'border-b border-green-400/30 shadow-2xl shadow-green-400/10' : ''
+        isScrolled ? 'border-b border-green-400/20 shadow-2xl shadow-green-400/5' : 'border-b border-transparent'
       }`}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
