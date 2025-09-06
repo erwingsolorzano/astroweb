@@ -182,45 +182,150 @@ export default function HeroAbout() {
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-lg p-4"
             onClick={handleCloseAvatar}
           >
+            {/* Terminal Window Container */}
             <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.5, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-w-lg w-full aspect-square"
+              initial={{ opacity: 0, y: 50, rotateX: -15 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              exit={{ opacity: 0, y: 50, rotateX: -15 }}
+              transition={{ 
+                type: "spring", 
+                damping: 20, 
+                stiffness: 300,
+                opacity: { duration: 0.3 },
+                y: { duration: 0.4 },
+                rotateX: { duration: 0.4 }
+              }}
+              className="relative max-w-2xl w-full mx-auto"
               onClick={(e) => e.stopPropagation()}
+              style={{ perspective: '1000px' }}
             >
-              {/* Close button */}
-              <button
-                onClick={handleCloseAvatar}
-                className="absolute -top-12 right-0 p-2 bg-green-400/20 hover:bg-green-400/30 rounded-full transition-all duration-300 z-10"
-              >
-                <X className="w-6 h-6 text-green-400" />
-              </button>
+              {/* Terminal Window */}
+              <div className="bg-gray-900 rounded-lg border-2 border-green-400/50 shadow-2xl shadow-green-400/20 overflow-hidden">
+                {/* Terminal Header */}
+                <div className="flex items-center justify-between px-4 py-3 bg-green-400/10 border-b border-green-400/30">
+                  <div className="flex items-center space-x-3">
+                    <div className="flex space-x-2">
+                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <span className="text-green-400 font-mono text-sm">erwing@portfolio:~/profile$</span>
+                  </div>
+                  <button
+                    onClick={handleCloseAvatar}
+                    className="p-1 hover:bg-green-400/20 rounded transition-colors duration-200"
+                  >
+                    <X className="w-5 h-5 text-green-400" />
+                  </button>
+                </div>
 
-              {/* Enhanced glow for modal */}
-              <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-emerald-500 to-cyan-500 rounded-2xl blur-2xl opacity-40 animate-pulse"></div>
-              
-              {/* Modal border */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 p-1">
-                <div className="w-full h-full rounded-2xl bg-black/80 backdrop-blur-sm"></div>
-              </div>
-              
-              {/* Large avatar */}
-              <img
-                src={aboutData.avatar}
-                alt={aboutData.name}
-                className="relative w-full h-full rounded-2xl object-cover shadow-2xl z-10 border-2 border-green-400/50"
-              />
-              
-              {/* Info overlay */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent rounded-b-2xl p-6 z-20">
-                <h3 className="text-xl font-bold font-mono text-green-400 mb-2">
-                  {aboutData.name}
-                </h3>
-                <p className="text-green-200 font-mono text-sm">
-                  {aboutData.role}
-                </p>
+                {/* Terminal Content */}
+                <div className="p-6 bg-black">
+                  {/* Command Line */}
+                  <div className="mb-4">
+                    <div className="flex items-center space-x-2 text-green-400 font-mono text-sm mb-2">
+                      <span>$</span>
+                      <span className="animate-pulse">cat developer_profile.txt</span>
+                    </div>
+                  </div>
+
+                  {/* Profile Content */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Avatar Section */}
+                    <div className="space-y-4">
+                      <div className="relative">
+                        {/* Matrix-style border effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-600/20 rounded-lg animate-pulse"></div>
+                        <div className="relative border-2 border-green-400/50 rounded-lg overflow-hidden bg-black/50 p-1">
+                          <img
+                            src={aboutData.avatar}
+                            alt={aboutData.name}
+                            className="w-full aspect-square object-cover rounded-md"
+                          />
+                        </div>
+                      </div>
+                      
+                      {/* System Info */}
+                      <div className="space-y-2 text-xs font-mono">
+                        <div className="flex justify-between text-green-300">
+                          <span>STATUS:</span>
+                          <span className="text-green-400">ONLINE</span>
+                        </div>
+                        <div className="flex justify-between text-green-300">
+                          <span>UPTIME:</span>
+                          <span className="text-green-400">24/7</span>
+                        </div>
+                        <div className="flex justify-between text-green-300">
+                          <span>MODE:</span>
+                          <span className="text-green-400">DEVELOPER</span>
+                    {/* Info Section */}
+                    <div className="space-y-4">
+                      {/* Header */}
+                      <div className="border-b border-green-400/30 pb-3">
+                        <h3 className="text-xl font-bold font-mono text-green-400 mb-1">
+                          {aboutData.name}
+                        </h3>
+                        <p className="text-green-300 font-mono text-sm">
+                          > {aboutData.role}
+                        </p>
+                      </div>
+                        </div>
+                      {/* System Specs */}
+                      <div className="space-y-2">
+                        <div className="text-green-400 font-mono text-sm mb-2">
+                          SYSTEM SPECIFICATIONS:
+                        </div>
+                        <div className="space-y-1 text-xs font-mono text-green-200">
+                          <div className="flex items-center space-x-2">
+                            <span className="text-green-400">•</span>
+                            <span>Frontend Engineering: EXPERT</span>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <span className="text-green-400">•</span>
+                            <span>React/TypeScript: ADVANCED</span>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <span className="text-green-400">•</span>
+                            <span>Performance Optimization: HIGH</span>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <span className="text-green-400">•</span>
+                            <span>Coffee Consumption: MAXIMUM</span>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      {/* Connection Status */}
+                      <div className="space-y-2">
+                        <div className="text-green-400 font-mono text-sm">
+                          CONNECTION STATUS:
+                        </div>
+                        <div className="space-y-1 text-xs font-mono">
+                          <div className="flex items-center space-x-2">
+                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <span className="text-green-200">GitHub: CONNECTED</span>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <span className="text-green-200">LinkedIn: ACTIVE</span>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <span className="text-green-200">Email: AVAILABLE</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    </div>
+                  {/* Terminal Footer */}
+                  <div className="mt-6 pt-4 border-t border-green-400/30">
+                    <div className="flex items-center space-x-2 text-green-400 font-mono text-xs">
+                      <span>$</span>
+                      <span className="animate-pulse">_</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </motion.div>
