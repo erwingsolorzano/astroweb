@@ -266,7 +266,7 @@ export default function HeroAbout() {
                           {aboutData.name}
                         </h3>
                         <p className="text-green-300 font-mono text-sm">
-                          > {aboutData.role}
+                          {aboutData.role}
                         </p>
                       </div>
                         </div>
