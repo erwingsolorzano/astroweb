@@ -110,7 +110,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps = {}) {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] bg-black flex items-center justify-center"
+            className="fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden"
           >
             {/* Background grid pattern */}
             <div className="absolute inset-0 opacity-10">
@@ -147,7 +147,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps = {}) {
               ))}
             </div>
 
-            <div className="relative z-10 text-center max-w-2xl mx-auto px-6">
+            <div className="relative z-10 text-center max-w-2xl mx-auto px-4 sm:px-6 w-full">
               {/* Logo/Icon */}
               <motion.div
                 initial={{ scale: 0, rotate: -180 }}
@@ -168,21 +168,21 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps = {}) {
                 className="bg-gray-900/90 backdrop-blur-sm rounded-lg border border-green-400/30 shadow-2xl shadow-green-400/20 mb-8"
               >
                 {/* Terminal Header */}
-                <div className="flex items-center justify-between px-4 py-3 bg-green-400/10 border-b border-green-400/30 rounded-t-lg">
+                <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 bg-green-400/10 border-b border-green-400/30 rounded-t-lg">
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   </div>
-                  <span className="text-green-400 font-mono text-sm">erwing@portfolio:~$</span>
+                  <span className="text-green-400 font-mono text-xs sm:text-sm">erwing@portfolio:~$</span>
                 </div>
 
                 {/* Terminal Content */}
-                <div className="p-6 space-y-4 min-h-[120px]">
+                <div className="p-4 sm:p-6 space-y-3 sm:space-y-4 min-h-[100px] sm:min-h-[120px]">
                   {/* System Message */}
                   <div className="flex items-center space-x-2">
                     <span className="text-green-400 font-mono text-sm">></span>
-                    <span className="text-green-200 font-mono text-sm">
+                    <span className="text-green-200 font-mono text-xs sm:text-sm break-words">
                       {currentMessage}
                       {!messageComplete && <span className="animate-pulse text-green-400">|</span>}
                     </span>
@@ -192,7 +192,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps = {}) {
                   {currentCode && (
                     <div className="flex items-center space-x-2">
                       <span className="text-green-400 font-mono text-sm">$</span>
-                      <span className="text-green-300 font-mono text-sm">
+                      <span className="text-green-300 font-mono text-xs sm:text-sm break-words">
                         {currentCode}
                         {!codeComplete && <span className="animate-pulse text-green-400">|</span>}
                       </span>
@@ -208,7 +208,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps = {}) {
                 transition={{ delay: 0.5 }}
                 className="mb-6"
               >
-                <div className="w-full bg-gray-800 rounded-full h-2 border border-green-400/30">
+                <div className="w-full bg-gray-800 rounded-full h-1.5 sm:h-2 border border-green-400/30">
                   <motion.div
                     className="bg-gradient-to-r from-green-400 to-green-500 h-full rounded-full shadow-lg shadow-green-400/50"
                     initial={{ width: 0 }}
@@ -246,7 +246,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps = {}) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1 }}
-                className="text-green-400/60 font-mono text-xs mt-8"
+                className="text-green-400/60 font-mono text-xs mt-6 sm:mt-8 px-2"
               >
                 Creado y desarrollado por Erwing Solorzano © 2025
               </motion.p>
