@@ -26,6 +26,31 @@ const TailwindIcon = () => (
   </svg>
 );
 
+interface TooltipProps {
+  children: React.ReactNode;
+  text: string;
+}
+
+const Tooltip = ({ children, text }: TooltipProps) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <div 
+      className="relative inline-block"
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
+    >
+      {children}
+      {isVisible && (
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-green-400 text-xs font-mono rounded-lg border border-green-400/30 whitespace-nowrap z-10 shadow-lg">
+          {text}
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   
@@ -38,19 +63,35 @@ export default function Footer() {
             <span className="text-black font-bold text-xl font-mono">AR</span>
           </div>
           
-          <p className="text-green-100 font-mono flex items-center justify-center space-x-2">
-            <span>© {currentYear} Erwing Solorzano. Hecho con</span>
-            <Heart className="w-4 h-4 text-green-400 fill-current" />
-            <span>y mucho café.</span>
-          </p>
-          <p className="text-sm text-green-200 font-mono mt-2 flex items-center justify-center space-x-3">
-            <span>Construido con</span>
+          <div className="text-green-100 font-mono flex flex-col sm:flex-row items-center justify-center space-y-1 sm:space-y-0 sm:space-x-2 text-center">
+            <span>© {currentYear} Erwing Solorzano.</span>
             <div className="flex items-center space-x-2">
-              <AstroIcon />
-              <ReactIcon />
-              <TailwindIcon />
+              <span>Hecho con</span>
+              <Heart className="w-4 h-4 text-green-400 fill-current" />
+              <span>y mucho café.</span>
             </div>
-          </p>
+          </div>
+          
+          <div className="text-sm text-green-200 font-mono flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-3 text-center">
+            <span>Construido con</span>
+            <div className="flex items-center space-x-3">
+              <Tooltip text="Astro">
+                <div className="hover:scale-110 transition-transform duration-200 cursor-pointer">
+                  <AstroIcon />
+                </div>
+              </Tooltip>
+              <Tooltip text="React">
+                <div className="hover:scale-110 transition-transform duration-200 cursor-pointer">
+                  <ReactIcon />
+                </div>
+              </Tooltip>
+              <Tooltip text="Tailwind CSS">
+                <div className="hover:scale-110 transition-transform duration-200 cursor-pointer">
+                  <TailwindIcon />
+                </div>
+              </Tooltip>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
