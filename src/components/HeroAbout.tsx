@@ -75,7 +75,7 @@ export default function HeroAbout() {
             />
             
             {/* Hover indicator */}
-            <div className="absolute -top-8 -right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-20">
+            <div className="absolute -top-2 -right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-20">
               {/* Rectángulo simple estilo Windows */}
               <div 
                 className="bg-yellow-100 border border-black px-2 py-1 shadow-lg whitespace-nowrap"
