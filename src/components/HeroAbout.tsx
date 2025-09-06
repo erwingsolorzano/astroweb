@@ -46,6 +46,41 @@ export default function HeroAbout() {
           transition={{ duration: 0.4 }}
           className="space-y-6 sm:space-y-8 w-full"
         >
+          {/* Click me indicator */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 2 }}
+            className="absolute -top-12 left-1/2 transform -translate-x-1/2 z-20"
+          >
+            <div className="relative">
+              {/* Animated arrow pointing down */}
+              <motion.div
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-2 left-1/2 transform -translate-x-1/2"
+              >
+                <div className="w-0 h-0 border-l-4 border-r-4 border-t-6 border-transparent border-t-green-400"></div>
+              </motion.div>
+              
+              {/* Click me text */}
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.05, 1],
+                  textShadow: [
+                    '0 0 5px rgba(34, 197, 94, 0.5)',
+                    '0 0 10px rgba(34, 197, 94, 0.8)',
+                    '0 0 5px rgba(34, 197, 94, 0.5)'
+                  ]
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="bg-gradient-to-r from-green-400 to-emerald-400 text-black px-3 py-1.5 rounded-lg font-mono text-xs sm:text-sm font-bold shadow-lg border border-green-400/50 whitespace-nowrap"
+              >
+                Click me! 👆
+              </motion.div>
+            </div>
+          </motion.div>
+
           {/* Avatar */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
