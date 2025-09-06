@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ExperienceList() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [expandedJobs, setExpandedJobs] = useState<Set<number>>(new Set());
+  const [expandedJobs, setExpandedJobs] = useState<Set<number>(new Set());
 
   useEffect(() => {
     if (!containerRef.current) return;
