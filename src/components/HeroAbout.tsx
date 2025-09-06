@@ -56,61 +56,6 @@ export default function HeroAbout() {
             className="relative mx-auto w-28 h-28 sm:w-32 sm:h-32 lg:w-40 lg:h-40 group cursor-pointer"
             onClick={handleAvatarClick}
           >
-            {/* Click me bubble indicator - sobrepuesto al avatar */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 2.5 }}
-              className="absolute top-0 -right-2 z-30 pointer-events-none"
-            >
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 2, -2, 0]
-                }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-                className="relative"
-              >
-                {/* Burbuja principal */}
-                <div className="bg-white border-2 border-blue-600 px-1.5 py-0.5 shadow-lg relative" style={{
-                  clipPath: 'polygon(0 0, calc(100% - 3px) 0, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0 calc(100% - 3px), 0 3px)',
-                  imageRendering: 'pixelated'
-                }}>
-                  {/* Texto retro estilo Windows */}
-                  <span 
-                    className="text-blue-900 font-bold text-xs whitespace-nowrap select-none"
-                    style={{
-                      fontFamily: 'MS Sans Serif, sans-serif',
-                      textShadow: '1px 1px 0px rgba(0,0,139,0.7)',
-                      letterSpacing: '0.3px',
-                      fontSize: '9px'
-                    }}
-                  >
-                    CLICK ME!
-                  </span>
-                  
-                  {/* Cola de la burbuja */}
-                  <div className="absolute -bottom-1 left-1/3 transform -translate-x-1/2">
-                    <div className="w-0 h-0 border-l-1.5 border-r-1.5 border-t-2.5 border-transparent border-t-white" style={{
-                      imageRendering: 'pixelated'
-                    }}></div>
-                    <div className="absolute -top-0.5 left-1/2 transform -translate-x-1/2">
-                      <div className="w-0 h-0 border-l-1 border-r-1 border-t-1.5 border-transparent border-t-blue-900" style={{
-                        imageRendering: 'pixelated'
-                      }}></div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Efecto de brillo */}
-                <div className="absolute inset-0 bg-white/20 rounded-full animate-pulse"></div>
-              </motion.div>
-            </motion.div>
-
             {/* Modern glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-emerald-500 to-cyan-500 rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-all duration-500 animate-pulse"></div>
             
@@ -130,9 +75,51 @@ export default function HeroAbout() {
             />
             
             {/* Hover indicator */}
-            <div className="absolute inset-0 rounded-full bg-green-400/0 group-hover:bg-green-400/10 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-              <div className="text-green-400 text-xs sm:text-sm font-mono bg-black/80 px-2 py-1 rounded-lg backdrop-blur-sm">
-                Click para ampliar
+            <div className="absolute inset-0 rounded-full bg-green-400/0 group-hover:bg-green-400/10 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
+              {/* Burbuja amarilla estilo Windows */}
+              <div className="relative">
+                {/* Burbuja principal */}
+                <div 
+                  className="bg-yellow-100 border border-gray-800 px-3 py-2 shadow-lg relative"
+                  style={{
+                    background: 'linear-gradient(to bottom, #ffffcc 0%, #ffff99 100%)',
+                    border: '1px solid #000000',
+                    boxShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+                    fontFamily: 'MS Sans Serif, Tahoma, sans-serif'
+                  }}
+                >
+                  <span 
+                    className="text-black font-normal text-xs whitespace-nowrap select-none"
+                    style={{
+                      fontSize: '11px',
+                      fontWeight: 'normal'
+                    }}
+                  >
+                    Click me
+                  </span>
+                </div>
+                
+                {/* Cola de la burbuja apuntando hacia abajo */}
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2">
+                  <div 
+                    className="w-0 h-0"
+                    style={{
+                      borderLeft: '6px solid transparent',
+                      borderRight: '6px solid transparent',
+                      borderTop: '6px solid #ffff99'
+                    }}
+                  ></div>
+                  <div 
+                    className="absolute -top-1 left-1/2 transform -translate-x-1/2"
+                    style={{
+                      width: 0,
+                      height: 0,
+                      borderLeft: '7px solid transparent',
+                      borderRight: '7px solid transparent',
+                      borderTop: '7px solid #000000'
+                    }}
+                  ></div>
+                </div>
               </div>
             </div>
           </motion.div>
