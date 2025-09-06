@@ -102,34 +102,44 @@ export default function ExperienceList() {
             </div>
             
             {/* Achievements - Animated */}
-            {expandedJobs.has(index) && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden mb-4"
-              >
-                <div className="text-green-400 font-mono text-sm mb-3 flex items-center">
-                  <span className="mr-2">$</span>
-                  <span>cat achievements.log</span>
-                </div>
-                <div className="space-y-2">
-                  {job.achievements.map((achievement, achievementIndex) => (
-                    <motion.div
-                      key={achievementIndex}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.2, delay: achievementIndex * 0.05 }}
-                      className="flex items-start space-x-3 text-green-200"
-                    >
-                      <span className="text-green-400 font-mono text-sm mt-0.5"></span>
-                      <span className="text-sm font-mono leading-relaxed">{achievement}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
+            <motion.div
+              initial={false}
+              animate={{
+                height: expandedJobs.has(index) ? 'auto' : 0,
+                opacity: expandedJobs.has(index) ? 1 : 0,
+                marginBottom: expandedJobs.has(index) ? 16 : 0
+              }}
+              transition={{ 
+                duration: 0.3,
+                ease: "easeInOut"
+              }}
+              className="overflow-hidden"
+            >
+              <div className="text-green-400 font-mono text-sm mb-3 flex items-center">
+                <span className="mr-2">$</span>
+                <span>cat achievements.log</span>
+              </div>
+              <div className="space-y-2">
+                {job.achievements.map((achievement, achievementIndex) => (
+                  <motion.div
+                    key={achievementIndex}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ 
+                      opacity: expandedJobs.has(index) ? 1 : 0, 
+                      x: expandedJobs.has(index) ? 0 : -10 
+                    }}
+                    transition={{ 
+                      duration: 0.2, 
+                      delay: expandedJobs.has(index) ? achievementIndex * 0.05 : 0
+                    }}
+                    className="flex items-start space-x-3 text-green-200"
+                  >
+                    <span className="text-green-400 font-mono text-sm mt-0.5">></span>
+                    <span className="text-sm font-mono leading-relaxed">{achievement}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
             
             {/* Technologies */}
             <div>
