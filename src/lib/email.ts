@@ -32,7 +32,7 @@ export const sendEmail = async (formData: ContactFormData): Promise<void> => {
       from_name: formData.name,
       from_email: formData.email,
       message: formData.message,
-      to_email: 'alex@ejemplo.com', // Tu email de destino
+      to_email: 'erwing1394@gmail.com', // Tu email de destino
     };
 
     await emailjs.send(
