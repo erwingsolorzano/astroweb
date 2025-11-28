@@ -12,14 +12,6 @@ export default function ProjectsGrid() {
   // Crear proyectos placeholder para mostrar que hay más en desarrollo
   const placeholderProjects = [
     {
-      name: "E-Commerce Platform",
-      description: "Plataforma de comercio electrónico completa con carrito de compras, pagos y gestión de inventario.",
-      impact: ["En desarrollo"],
-      stack: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
-      links: {},
-      isPlaceholder: true
-    },
-    {
       name: "Task Management App",
       description: "Aplicación de gestión de tareas con colaboración en tiempo real y notificaciones push.",
       impact: ["Próximamente"],

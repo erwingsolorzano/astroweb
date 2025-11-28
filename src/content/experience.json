@@ -1,50 +1,44 @@
 [
   {
-    "company": "Tech Solutions Inc.",
-    "position": "Senior Frontend Developer",
+    "company": "Ciudadela Management",
+    "position": "Desarrollador Full Stack",
     "type": "Tiempo completo",
-    "location": "Remoto",
-    "start": "2022",
+    "location": "Remoto, Madrid - España",
+    "start": "Septiembre 2025",
     "end": "Presente",
-    "description": "Lidero el desarrollo de aplicaciones web modernas utilizando React, TypeScript y tecnologías de vanguardia.",
+    "description": "Integro el equipo de ingeniería encargado de analizar, diseñar y desarrollar mejoras continuas para optimizar el sistema.",
     "achievements": [
-      "Mejoré el rendimiento de la aplicación principal en un 60%",
-      "Implementé arquitectura de microfrontends para 3 equipos",
-      "Mentoré a 5 desarrolladores junior en mejores prácticas",
-      "Reduje el tiempo de carga inicial de 8s a 2.3s"
     ],
     "technologies": ["React", "TypeScript", "Next.js", "Tailwind CSS", "GraphQL", "AWS"]
   },
   {
-    "company": "Digital Agency Pro",
-    "position": "Frontend Developer",
+    "company": "Equasystems S.A.S",
+    "position": "Desarrollador Full Stack",
     "type": "Tiempo completo",
-    "location": "Híbrido",
-    "start": "2020",
-    "end": "2022",
-    "description": "Desarrollé sitios web y aplicaciones para clientes de diversos sectores, enfocándome en experiencia de usuario y rendimiento.",
+    "location": "Presencial, Guayaquil - Ecuador",
+    "start": "Julio 2022",
+    "end": "Septiembre 2025",
+    "description": "Integré el equipo de desarrollo encargado de diseñar y desarrollar nuevos módulos para clientes del sector de seguros, impulsando mejoras en la experiencia de usuario y el rendimiento del sistema.",
     "achievements": [
-      "Entregué +15 proyectos web con 98% satisfacción del cliente",
-      "Implementé sistema de design tokens reutilizable",
-      "Optimicé SEO logrando +40% tráfico orgánico promedio",
-      "Colaboré con equipos de UX/UI en 20+ proyectos"
+      "Implementé un sistema de carga de datos que agilizó procesos en un 30%",
+      "Optimicé el modulo de reclamos agilizando la experiencia del usuario y asegurando la fiabilidad de los datos",
+      "Colaboré con equipos extranjeros para integrar APIs y servicios de terceros"
     ],
-    "technologies": ["JavaScript", "React", "Vue.js", "SCSS", "WordPress", "Figma"]
+    "technologies": ["JavaScript", "React", "Node.js", "CSS", "Bootstrap", "ejs", "jQuery", "MySQL"]
   },
   {
-    "company": "StartupXYZ",
-    "position": "Junior Frontend Developer",
+    "company": "Grant Thornton Ecuador",
+    "position": "Lider de TI",
     "type": "Tiempo completo",
-    "location": "Presencial",
+    "location": "Presencial, Guayaquil - Ecuador",
     "start": "2019",
     "end": "2020",
-    "description": "Mi primera experiencia profesional donde aprendí las bases del desarrollo frontend moderno y metodologías ágiles.",
+    "description": "Mi primera experiencia profesional donde puse en práctica mis conocimientos de tecnologías de la información y aprendí las bases del desarrollo backend y frontend moderno.",
     "achievements": [
-      "Desarrollé 3 landing pages que generaron +500 leads",
-      "Implementé responsive design en toda la plataforma",
-      "Participé en daily standups y sprints de 2 semanas",
-      "Aprendí Git, testing y deployment automatizado"
+      "Desarrollé landing pages para campañas de cursos y seminarios",
+      "Actualicé y mantuve la aplicación propietaria para gestión de comprobantes electrónicos del servicio de rentas internas",
+      "Implementé un aula virtual para capacitaciones internas"
     ],
-    "technologies": ["HTML5", "CSS3", "JavaScript", "Bootstrap", "jQuery", "Git"]
+    "technologies": ["HTML5", "CSS3", "JavaScript", "TypeScript", "Bootstrap", "jQuery", "Git"]
   }
 ]

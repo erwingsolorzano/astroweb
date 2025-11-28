@@ -20,8 +20,8 @@ export default function ExperienceList() {
 
   return (
     <div className="space-y-8">
-      {experienceData.map((job, index) => (
-        <motion.div
+      {experienceData.map((job, index) => {
+        return <motion.div
           key={index}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export default function ExperienceList() {
             </p>
             
             {/* Expand Button */}
-            <div className="mb-4">
+            {job.achievements.length > 0 && <div className="mb-4">
               <button
                 onClick={() => toggleJobExpansion(index)}
                 className="group/btn inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-green-600/80 to-emerald-600/80 hover:from-green-500 hover:to-emerald-500 text-black font-bold font-mono rounded-lg transition-all duration-300 shadow-lg hover:shadow-green-500/50 hover:scale-105 relative overflow-hidden"
@@ -99,7 +99,7 @@ export default function ExperienceList() {
                   }`}
                 />
               </button>
-            </div>
+            </div>}
             
             {/* Achievements - Animated */}
             <motion.div
@@ -115,10 +115,6 @@ export default function ExperienceList() {
               }}
               className="overflow-hidden"
             >
-              <div className="text-green-400 font-mono text-sm mb-3 flex items-center">
-                <span className="mr-2">$</span>
-                <span>cat achievements.log</span>
-              </div>
               <div className="space-y-2">
                 {job.achievements.map((achievement, achievementIndex) => (
                   <motion.div
@@ -159,8 +155,8 @@ export default function ExperienceList() {
               </div>
             </div>
           </div>
-        </motion.div>
-      ))}
+        </motion.div>;
+      })}
     </div>
   );
 }

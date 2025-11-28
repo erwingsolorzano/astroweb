@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Terminal, Calendar } from 'lucide-react';
+import { Terminal, Calendar, Building2 } from 'lucide-react';
 import educationData from '../content/education.json';
 
 export default function EducationList() {
@@ -38,9 +38,12 @@ export default function EducationList() {
                 <h3 className="text-xl font-bold font-mono text-green-400 mb-1">
                   {item.program}
                 </h3>
-                <p className="text-green-200 font-mono text-sm">
-                  {item.institution}
-                </p>
+                <div className="flex items-center space-x-2 mb-4">
+                  <Building2 className="w-4 h-4 text-green-400" />
+                  <p className="text-green-200 font-mono text-sm">
+                    {item.institution}
+                  </p>
+                </div>
               </div>
               
               {/* Date range */}
@@ -54,9 +57,6 @@ export default function EducationList() {
               {/* Highlights */}
               {item.highlights && item.highlights.length > 0 && (
                 <div className="space-y-2">
-                  <div className="text-green-400 font-mono text-sm mb-2">
-                    $ cat achievements.txt
-                  </div>
                   {item.highlights.map((highlight, highlightIndex) => (
                     <div
                       key={highlightIndex}
