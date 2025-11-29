@@ -161,13 +161,13 @@ export default function HeroAbout() {
             transition={{ duration: 0.4, delay: 0.35 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-4 px-2"
           >
-            <button
+            {/* <button
               onClick={handleDownloadCV}
               className="group inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-green-400 hover:bg-green-500 text-black font-bold font-mono rounded-lg transition-all duration-300 shadow-2xl hover:shadow-green-400/50 hover:scale-105 transform border border-green-400 text-sm sm:text-base w-full sm:w-auto justify-center"
             >
               <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
               Descargar CV
-            </button>
+            </button> */}
             <button
               onClick={handleContactClick}
               className="group inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-black/80 hover:bg-black text-green-400 font-bold font-mono rounded-lg border-2 border-green-400 hover:border-green-300 transition-all duration-300 shadow-xl hover:shadow-green-400/30 hover:scale-105 transform backdrop-blur-sm text-sm sm:text-base w-full sm:w-auto justify-center"

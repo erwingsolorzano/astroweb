@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Terminal, Calendar, Building2 } from 'lucide-react';
+import { Terminal, Calendar, Building2, Link } from 'lucide-react';
 import educationData from '../content/education.json';
 
 export default function EducationList() {
@@ -68,6 +68,14 @@ export default function EducationList() {
                   ))}
                 </div>
               )}
+              {item.fileUrl &&
+                <div className="mt-4">
+                  <a href={item.fileUrl} target="_blank" rel="noopener noreferrer" className="text-sm font-mono text-green-300 hover:underline">
+                    <Link className="w-4 h-4 inline-block mr-1" />
+                    Ver certificado
+                  </a>
+                </div>
+              }
             </div>
           </div>
           

@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://tu-dominio.com', // Cambia por tu dominio
+  site: 'https://erwingsolorzano.github.io',
   integrations: [
     react(),
     tailwind({

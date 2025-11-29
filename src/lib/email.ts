@@ -13,9 +13,12 @@ export interface EmailConfig {
 }
 
 export const getEmailConfig = (): EmailConfig => {
-  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  const serviceId = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+  console.log('🚬 ===> email.ts:17 ===> getEmailConfig ===> serviceId:', serviceId);
+  const templateId = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+  console.log('🚬 ===> email.ts:19 ===> getEmailConfig ===> templateId:', templateId);
+  const publicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
+  console.log('🚬 ===> email.ts:21 ===> getEmailConfig ===> publicKey:', publicKey);
 
   if (!serviceId || !templateId || !publicKey) {
     throw new Error('EmailJS configuration is missing. Please check your environment variables.');

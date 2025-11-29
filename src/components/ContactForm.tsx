@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Copy, Check } from 'lucide-react';
 import { sendEmail, validateForm, type ContactFormData } from '../lib/email';
@@ -15,7 +15,23 @@ export default function ContactForm() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<string[]>([]);
   const [emailCopied, setEmailCopied] = useState(false);
-  const [cooldown, setCooldown] = useState(false);
+  const [cooldown, setCooldown] = useState<number>(0);
+  const isOnCooldown = cooldown > 0;
+
+  useEffect(() => {
+    if (!cooldown) return;
+
+    const intervalId = window.setInterval(() => {
+      setCooldown(prev => {
+        if (prev <= 1) {
+          return 0; // se acaba el cooldown
+        }
+        return prev - 1; // restar 1 segundo
+      });
+    }, 1000);
+
+    return () => window.clearInterval(intervalId);
+  }, [cooldown]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -31,8 +47,8 @@ export default function ContactForm() {
     e.preventDefault();
     
     // Check cooldown
-    if (cooldown) {
-      setErrors(['Por favor espera antes de enviar otro mensaje.']);
+    if (cooldown > 0) {
+      setErrors([`Por favor espera ${cooldown} segundos antes de enviar otro mensaje.`]);
       return;
     }
     
@@ -44,7 +60,6 @@ export default function ContactForm() {
     }
 
     setIsSubmitting(true);
-    setCooldown(true);
     setErrors([]);
 
     try {
@@ -65,7 +80,7 @@ export default function ContactForm() {
     } finally {
       setIsSubmitting(false);
       // Set cooldown for 60 seconds
-      setTimeout(() => setCooldown(false), 60000);
+      setCooldown(30);
     }
   };
 
@@ -203,7 +218,7 @@ export default function ContactForm() {
             )}
 
             {/* Success Message */}
-            {submitStatus === 'success' && (
+            {submitStatus === 'success' && isOnCooldown &&(
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -222,7 +237,7 @@ export default function ContactForm() {
             >
               <button
                 type="submit"
-                disabled={isSubmitting || cooldown}
+                disabled={isSubmitting || isOnCooldown}
                 className={`group relative overflow-hidden w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 disabled:from-gray-600 disabled:to-gray-700 text-black font-bold font-mono rounded-lg transition-all duration-300 shadow-2xl hover:shadow-green-500/50 py-4 text-lg ${
                   isSubmitting || cooldown ? "opacity-80 cursor-not-allowed" : "hover:scale-105 transform"
                 }`}
@@ -255,10 +270,10 @@ export default function ContactForm() {
                       <div className="animate-spin rounded-full h-6 w-6 border-3 border-black border-t-transparent"></div>
                       Enviando...
                     </>
-                  ) : cooldown ? (
+                  ) : isOnCooldown ? (
                     <>
                       <div className="w-6 h-6 flex items-center justify-center">⏳</div>
-                      Espera un momento...
+                      Espera {cooldown}s antes de enviar otro mensaje...
                     </>
                   ) : (
                     <>

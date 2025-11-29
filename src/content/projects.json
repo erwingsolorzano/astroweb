@@ -8,11 +8,10 @@
     ],
     "stack": ["Astro", "Next.js", "React", "emailjs", "Vercel"],
     "links": {
-      "demo": "https://ecotracker-demo.vercel.app",
-      "github": "https://github.com/alexrivera/ecotracker"
+      "github": "https://github.com/erwingsolorzano/astroweb"
     },
     "images": [
-      "https://astro.build/og/astro.jpg"
+      "./astro-bg.webp"
     ],
     "featured": true
   }

@@ -86,8 +86,8 @@ export const generateJSONLD = (type: 'Person' | 'WebSite', data: any) => {
 };
 
 export const defaultSEO: SEOMetadata = {
-  title: 'Erwing Solorzano - Frontend Engineer',
-  description: 'Frontend Engineer especializado en React, TypeScript y experiencias web rápidas. Construyo aplicaciones que deleitan a usuarios y generan resultados.',
+  title: 'Erwing Solorzano - Full Stack Developer',
+  description: 'Full Stack Developer especializado en React, TypeScript y experiencias web rápidas. Construyo aplicaciones que deleitan a usuarios y generan resultados.',
   image: '/og-image.jpg',
   author: 'Erwing Solorzano',
 };
