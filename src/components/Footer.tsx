@@ -26,19 +26,19 @@ export default function Footer() {
             <span>Construido con</span>
             <div className="flex items-center space-x-3">
                 <img
-                  src="./src/images/astro.svg"
+                  src="./astro.svg"
                   alt="Astro"
                   className="w-5 h-5 hover:scale-150 transition-transform duration-200"
                   title='Astro'
                 />
                 <img
-                  src="./src/images/react.svg"
+                  src="./react.svg"
                   alt="React"
                   className="w-5 h-5 hover:scale-150 transition-transform duration-200"
                   title='React'
                 />
                 <img
-                  src="./src/images/tailwind.svg"
+                  src="./tailwind.svg"
                   alt="Tailwind"
                   className="w-5 h-5 hover:scale-150 transition-transform duration-200"
                   title='Tailwind'

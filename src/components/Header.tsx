@@ -92,7 +92,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center">
           <img
-            src="./src/images/iconES.webp"
+            src="./iconES.webp"
             alt="Logo"
             className="w-10 h-10 object-contain hover:scale-110 transition-transform duration-300 cursor-pointer"
           />
