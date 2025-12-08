@@ -29,8 +29,8 @@ export const sendEmail = async (formData: ContactFormData): Promise<void> => {
     const config = getEmailConfig();
     
     const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
+      name: formData.name,
+      email: formData.email,
       message: formData.message,
       to_email: 'erwing1394@gmail.com', // Tu email de destino
     };
