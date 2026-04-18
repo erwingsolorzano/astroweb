@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Image } from 'astro:assets';
 
 const navigation = [
   { name: 'Sobre mí', href: '#sobre-mi' },
@@ -11,13 +10,6 @@ const navigation = [
   { name: 'Contacto', href: '#contacto' },
 ];
 
-const navigationEn = [
-  { name: 'About', href: '#sobre-mi' },
-  { name: 'Experience', href: '#experiencia' },
-  { name: 'Education', href: '#educacion' },
-  { name: 'Projects', href: '#proyectos' },
-  { name: 'Contact', href: '#contacto' },
-];
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('sobre-mi');
@@ -57,29 +49,27 @@ export default function Header() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
     setIsMenuOpen(false);
-    
-    // Small delay to allow menu to close first
-    setTimeout(() => {
-      const element = document.querySelector(href);
-      if (element) {
-        const headerHeight = 80; // Account for fixed header
-        const elementPosition = element.offsetTop - headerHeight;
-        window.scrollTo({
-          top: elementPosition,
-          behavior: 'smooth'
-        });
-      }
-    }, 100);
+
+    const target = document.querySelector(href) as HTMLElement | null;
+    if (!target) return;
+
+    window.setTimeout(() => {
+      const headerHeight = 80;
+      const elementPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+      window.history.replaceState(null, '', href);
+    }, 320);
   };
 
   return (
     <header 
       className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-black border-b border-green-400/20 shadow-2xl shadow-green-400/5 md:backdrop-blur-xl' 
-          : 'bg-black md:bg-transparent border-b border-transparent'
+          ? 'bg-black/75 border-b border-white/10 shadow-2xl shadow-black/20 md:backdrop-blur-2xl' 
+          : 'bg-black/40 md:bg-transparent border-b border-transparent'
       }`}
       style={{
         transform: 'translate3d(0, 0, 0)',
@@ -88,30 +78,34 @@ export default function Header() {
       }}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-18 py-2">
           {/* Logo */}
           <div className="flex items-center">
-          <img
-            src="./iconES.webp"
-            alt="Logo"
-            className="w-10 h-10 object-contain hover:scale-110 transition-transform duration-300 cursor-pointer"
-          />
-        </div>
+            <a href="#sobre-mi" aria-label="Ir al inicio" className="inline-flex items-center">
+              <img
+                src="./iconES.webp"
+                alt="Logo de Erwing Solorzano"
+                className="w-10 h-10 object-contain transition-transform duration-300 cursor-pointer hover:scale-105"
+              />
+            </a>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <button
+              <a
                 key={item.name}
-                onClick={() => handleNavClick(item.href)}
-                className={`px-4 py-2 text-sm font-medium font-mono rounded-lg transition-all duration-300 hover:scale-105 ${
+                href={item.href}
+                onClick={(event) => handleNavClick(event, item.href)}
+                aria-current={activeSection === item.href.slice(1) ? 'page' : undefined}
+                className={`px-4 py-2 text-sm font-medium tracking-tight rounded-full transition-all duration-300 hover:scale-105 ${
                   activeSection === item.href.slice(1)
-                    ? 'text-black bg-green-400 shadow-lg shadow-green-400/50'
-                    : 'text-green-400 hover:text-black hover:bg-green-400/90 border border-transparent hover:border-green-400'
+                    ? 'text-black bg-green-400 shadow-lg shadow-green-400/20'
+                    : 'text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
                 }`}
               >
                 {item.name}
-              </button>
+              </a>
             ))}
           </div>
 
@@ -119,12 +113,15 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg bg-black/80 border border-green-400/50 hover:scale-110 transition-all duration-300"
+              aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+                className="p-2 rounded-full bg-white/5 border border-white/10 hover:scale-105 transition-all duration-300"
             >
               {isMenuOpen ? (
-                <X className="h-6 w-6 text-green-400" />
+                <X className="h-6 w-6 text-white" />
               ) : (
-                <Menu className="h-6 w-6 text-green-400" />
+                <Menu className="h-6 w-6 text-white" />
               )}
             </button>
           </div>
@@ -134,25 +131,28 @@ export default function Header() {
         <AnimatePresence mode="wait">
           {isMenuOpen && (
             <motion.div
+              id="mobile-menu"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden border-t border-green-400/30 bg-black/95 backdrop-blur-xl"
+              className="md:hidden border-t border-white/10 bg-black/90 backdrop-blur-2xl"
             >
               <div className="py-4 space-y-2">
                 {navigation.map((item) => (
-                  <button
+                  <a
                     key={item.name}
-                    onClick={() => handleNavClick(item.href)}
-                    className={`block w-full text-left px-3 py-2 rounded-lg text-base font-medium font-mono transition-all duration-300 ${
+                    href={item.href}
+                    onClick={(event) => handleNavClick(event, item.href)}
+                    aria-current={activeSection === item.href.slice(1) ? 'page' : undefined}
+                    className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium tracking-tight transition-all duration-300 ${
                       activeSection === item.href.slice(1)
-                        ? 'text-black bg-green-400 shadow-lg shadow-green-400/50'
-                        : 'text-green-400 hover:text-black hover:bg-green-400/90'
+                        ? 'text-black bg-green-400 shadow-lg shadow-green-400/20'
+                        : 'text-slate-200 hover:text-white hover:bg-white/5'
                     }`}
                   >
                     {item.name}
-                  </button>
+                  </a>
                 ))}
               </div>
             </motion.div>

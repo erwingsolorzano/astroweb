@@ -6,7 +6,7 @@
     "location": "Remoto, Madrid - España",
     "start": "Septiembre 2025",
     "end": "Presente",
-    "description": "Integro el equipo de ingeniería encargado de analizar, diseñar y desarrollar mejoras continuas para optimizar el sistema.",
+    "description": "Formo parte del equipo de ingeniería que analiza, diseña y entrega mejoras continuas para hacer el sistema más claro y eficiente.",
     "achievements": [
     ],
     "technologies": ["React", "TypeScript", "Next.js", "Tailwind CSS", "GraphQL", "AWS"]
@@ -18,11 +18,11 @@
     "location": "Presencial, Guayaquil - Ecuador",
     "start": "Julio 2022",
     "end": "Septiembre 2025",
-    "description": "Integré el equipo de desarrollo encargado de diseñar y desarrollar nuevos módulos para clientes del sector de seguros, impulsando mejoras en la experiencia de usuario y el rendimiento del sistema.",
+    "description": "Integré el equipo de desarrollo responsable de nuevos módulos para clientes del sector seguros, mejorando la experiencia de usuario y el rendimiento del sistema.",
     "achievements": [
-      "Implementé un sistema de carga de datos que agilizó procesos en un 30%",
-      "Optimicé el modulo de reclamos agilizando la experiencia del usuario y asegurando la fiabilidad de los datos",
-      "Colaboré con equipos extranjeros para integrar APIs y servicios de terceros"
+      "Implementé un sistema de carga de datos que redujo tiempos operativos en un 30%",
+      "Optimicé el módulo de reclamos para acelerar la gestión y mejorar la consistencia de datos",
+      "Colaboré con equipos internacionales para integrar APIs y servicios de terceros"
     ],
     "technologies": ["JavaScript", "React", "Node.js", "CSS", "Bootstrap", "ejs", "jQuery", "MySQL"]
   },
@@ -31,12 +31,12 @@
     "position": "Lider de TI",
     "type": "Tiempo completo",
     "location": "Presencial, Guayaquil - Ecuador",
-    "start": "2019",
-    "end": "2020",
-    "description": "Mi primera experiencia profesional donde puse en práctica mis conocimientos de tecnologías de la información y aprendí las bases del desarrollo backend y frontend moderno.",
+    "start": "Noviembre 2020",
+    "end": "Julio 2022",
+    "description": "Mi primera experiencia profesional, donde puse en práctica conocimientos de TI y consolidé bases de desarrollo backend y frontend moderno.",
     "achievements": [
       "Desarrollé landing pages para campañas de cursos y seminarios",
-      "Actualicé y mantuve la aplicación propietaria para gestión de comprobantes electrónicos del servicio de rentas internas",
+      "Actualicé y mantuve la aplicación propietaria para la gestión de comprobantes electrónicos",
       "Implementé un aula virtual para capacitaciones internas"
     ],
     "technologies": ["HTML5", "CSS3", "JavaScript", "TypeScript", "Bootstrap", "jQuery", "Git"]

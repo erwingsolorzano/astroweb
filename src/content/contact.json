@@ -1,6 +1,6 @@
 {
   "title": "Hablemos",
-  "description": "¿Tienes un proyecto interesante? Me encantaría conocer más detalles y ver cómo puedo ayudarte.",
+  "description": "Cuéntame en qué estás trabajando y veamos cómo llevarlo a una ejecución clara y sólida.",
   "form": {
     "name": {
       "label": "Nombre",
@@ -17,10 +17,10 @@
     "submit": "Enviar mensaje"
   },
   "alternative": {
-    "title": "Otras formas de contacto",
+    "title": "Contacto directo",
     "email": "erwing1394@gmail.com",
-    "copyEmailText": "Copiar email"
+    "copyEmailText": "Copiar correo"
   },
-  "success": "¡Mensaje enviado! Te responderé pronto.",
-  "error": "Hubo un error. Por favor, intenta de nuevo."
+  "success": "Mensaje enviado. Te responderé en breve.",
+  "error": "No se pudo enviar el mensaje. Intenta nuevamente."
 }

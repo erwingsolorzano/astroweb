@@ -1,10 +1,10 @@
 {
   "name": "Erwing Solórzano",
   "role": "Desarrollador Full Stack",
-  "bio": "Construyo experiencias web rápidas y accesibles que deleitan a los usuarios y generan resultados medibles para las empresas.",
+  "bio": "Diseño y desarrollo experiencias web rápidas, claras y útiles, con foco en conversión, rendimiento y una ejecución cuidada.",
   "bullets": [
-    "Experiencia en Next.js, React, Node.js, TypeScript y Tailwind CSS",
-    "Especialista en rendimiento web y arquitecturas escalables"
+    "Stack principal: Next.js, React, Node.js, TypeScript y Tailwind CSS",
+    "Enfoque en rendimiento, mantenibilidad y producto"
   ],
   "links": {
     "github": "https://github.com/erwingsolorzano",

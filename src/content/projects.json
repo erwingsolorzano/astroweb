@@ -1,10 +1,24 @@
 [
+    {
+    "name": "Wedder",
+    "description": "Tu asistente de bodas.",
+    "impact": [
+      "Planificación de su boda, gestión de invitados y presupuesto."
+    ],
+    "stack": ["Next.js", "Prisma", "Supabase", "Vercel"],
+    "links": {
+      "demo": "https://wedder.vercel.app/"
+    },
+    "images": [
+      "./wedder.png"
+    ],
+    "featured": true
+  },
   {
     "name": "AstroWeb Portfolio",
-    "description": "Portfolio personal con formulario de contacto.",
+    "description": "Portfolio personal con formulario de contacto y una presentación enfocada en claridad.",
     "impact": [
-      "Aumentó la visibilidad profesional",
-      "Aprendizaje de Astro, como nueva tecnología"
+      "Refuerza la presencia profesional y la percepción de marca"
     ],
     "stack": ["Astro", "Next.js", "React", "emailjs", "Vercel"],
     "links": {
@@ -13,6 +27,6 @@
     "images": [
       "./astro-bg.webp"
     ],
-    "featured": true
+    "featured": false
   }
 ]

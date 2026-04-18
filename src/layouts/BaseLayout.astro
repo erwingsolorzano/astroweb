@@ -1,16 +1,12 @@
 ---
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/inter/700.css';
-import '@fontsource/fira-code/400.css';
-import '@fontsource/fira-code/500.css';
-import '@fontsource/fira-code/600.css';
-import '@fontsource/fira-code/700.css';
-import '@fontsource/source-code-pro/400.css';
-import '@fontsource/source-code-pro/500.css';
-import '@fontsource/source-code-pro/600.css';
-import '@fontsource/source-code-pro/700.css';
+import '@fontsource/dm-sans/400.css';
+import '@fontsource/dm-sans/500.css';
+import '@fontsource/dm-sans/600.css';
+import '@fontsource/dm-sans/700.css';
+import '@fontsource/archivo/400.css';
+import '@fontsource/archivo/500.css';
+import '@fontsource/archivo/600.css';
+import '@fontsource/archivo/700.css';
 import '../styles/global.css';
 import { generateSEOTags, generateJSONLD, defaultSEO, type SEOMetadata } from '../lib/seo';
 import aboutData from '../content/about.json';
@@ -103,7 +99,13 @@ const websiteSchema = generateJSONLD('WebSite', {
     <!-- Dark mode script (runs before body to prevent flash) -->
   </head>
   
-  <body class="bg-black text-green-400 font-mono dark">
+  <body class="dark">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-[100] bg-blue-600 text-white px-4 py-2 rounded-lg"
+    >
+      Saltar al contenido principal
+    </a>
     <slot />
   </body>
 </html>

@@ -28,14 +28,14 @@ export const generateSEOTags = (metadata: SEOMetadata) => {
       image,
       url,
       type,
-      siteName: 'Erwing Solorzano - Portfolio',
+      siteName: 'Erwing Solorzano - Portafolio',
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
       image,
-      creator: '@alexrivera',
+      creator: '@erwingsolorzano',
     },
   };
 };
@@ -86,8 +86,8 @@ export const generateJSONLD = (type: 'Person' | 'WebSite', data: any) => {
 };
 
 export const defaultSEO: SEOMetadata = {
-  title: 'Erwing Solorzano - Full Stack Developer',
-  description: 'Full Stack Developer especializado en React, TypeScript y experiencias web rápidas. Construyo aplicaciones que deleitan a usuarios y generan resultados.',
+  title: 'Erwing Solorzano - Desarrollador Full Stack',
+  description: 'Desarrollador Full Stack especializado en React, TypeScript y experiencias web rápidas, claras y orientadas a resultados.',
   image: '/og-image.jpg',
   author: 'Erwing Solorzano',
 };

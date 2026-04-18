@@ -1,90 +1,115 @@
 import { motion } from 'framer-motion';
-import { Terminal, Calendar, Building2, Link } from 'lucide-react';
+import { Calendar, Building2, Link, GraduationCap, Award } from 'lucide-react';
 import educationData from '../content/education.json';
+
+const mainEducation = educationData[0];
+const certifications = educationData.slice(1);
 
 export default function EducationList() {
   return (
-    <div className="space-y-6">
-      {educationData.map((item, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3, delay: index * 0.1 }}
-          viewport={{ once: true }}
-          className="group relative"
-        >
-          {/* Terminal-style border */}
-          <div className="border-2 border-green-400/50 bg-black/90 backdrop-blur-sm hover:border-green-400 transition-all duration-300">
-            {/* Header bar like terminal window */}
-            <div className="flex items-center justify-between px-4 py-2 bg-green-400/10 border-b border-green-400/30">
-              <div className="flex items-center space-x-2">
-                <Terminal className="w-4 h-4 text-green-400" />
-                <span className="text-xs font-mono text-green-400 uppercase tracking-wider">
-                  {item.degree}
-                </span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                <div className="w-2 h-2 rounded-full bg-green-500"></div>
-              </div>
+    <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+      <motion.article
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35 }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="overflow-hidden rounded-[2rem] border border-white/12 bg-gradient-to-br from-white/[0.1] via-white/[0.06] to-white/[0.035] shadow-2xl shadow-black/25 backdrop-blur-xl"
+      >
+        <div className="border-b border-white/10 bg-black/10 px-6 py-4 sm:px-7">
+          <div className="flex items-center gap-3">
+            <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-green-400/20 text-green-200 border border-green-400/20 shadow-[0_0_24px_rgba(74,222,128,0.15)]">
+              <GraduationCap className="h-5 w-5" />
             </div>
-            
-            {/* Content */}
-            <div className="p-6">
-              {/* Institution and Program */}
-              <div className="mb-4">
-                <h3 className="text-xl font-bold font-mono text-green-400 mb-1">
-                  {item.program}
-                </h3>
-                <div className="flex items-center space-x-2 mb-4">
-                  <Building2 className="w-4 h-4 text-green-400" />
-                  <p className="text-green-200 font-mono text-sm">
-                    {item.institution}
-                  </p>
-                </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-green-300/80">Formación principal</p>
+              <h3 className="mt-1 text-2xl font-semibold tracking-tight text-white">{mainEducation.program}</h3>
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-6 p-6 sm:p-7 lg:p-8">
+          <div className="flex flex-wrap items-center gap-3 text-sm text-slate-300">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.08] px-3 py-1.5 shadow-sm shadow-black/10">
+              <Building2 className="h-4 w-4 text-green-300" />
+              <span>{mainEducation.institution}</span>
+            </div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.08] px-3 py-1.5 shadow-sm shadow-black/10">
+              <Calendar className="h-4 w-4 text-green-300" />
+              <span>{mainEducation.start} - {mainEducation.end}</span>
+            </div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-400/15 px-3 py-1.5 text-green-50 shadow-[0_0_20px_rgba(74,222,128,0.08)]">
+              <Award className="h-4 w-4" />
+              <span>{mainEducation.degree}</span>
+            </div>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {mainEducation.highlights.map((highlight) => (
+              <div key={highlight} className="rounded-2xl border border-white/10 bg-white/[0.07] px-4 py-4 shadow-sm shadow-black/10">
+                <p className="text-sm leading-7 text-slate-50">{highlight}</p>
               </div>
-              
-              {/* Date range */}
-              <div className="flex items-center space-x-2 mb-4">
-                <Calendar className="w-4 h-4 text-green-400" />
-                <span className="text-green-300 font-mono text-sm">
-                  {item.start} - {item.end}
-                </span>
+            ))}
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/[0.07] px-4 py-4 shadow-sm shadow-black/10">
+            <p className="text-xs uppercase tracking-[0.28em] text-slate-400">Resumen</p>
+            <p className="mt-2 text-sm leading-7 text-slate-100">
+              Base académica sólida orientada a gestión de sistemas, con foco en resolver problemas técnicos y construir soluciones estables.
+            </p>
+          </div>
+        </div>
+      </motion.article>
+
+      <div className="space-y-4">
+        {certifications.map((item, index) => (
+          <motion.article
+            key={`${item.institution}-${item.program}`}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.08 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="rounded-[1.75rem] border border-white/12 bg-gradient-to-br from-white/[0.1] via-white/[0.06] to-white/[0.035] p-5 shadow-xl shadow-black/20 backdrop-blur-xl transition-all duration-300 hover:from-white/[0.12] hover:to-white/[0.06]"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs uppercase tracking-[0.28em] text-green-300/80">Certificación</p>
+                <h4 className="mt-1 text-xl font-semibold tracking-tight text-white">{item.program}</h4>
               </div>
-              
-              {/* Highlights */}
-              {item.highlights && item.highlights.length > 0 && (
-                <div className="space-y-2">
-                  {item.highlights.map((highlight, highlightIndex) => (
-                    <div
-                      key={highlightIndex}
-                      className="flex items-start space-x-3 text-green-200"
-                    >
-                      <span className="text-green-400 font-mono text-sm mt-0.5">&gt;</span>
-                      <span className="text-sm font-mono leading-relaxed">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
+              <span className="rounded-full border border-white/10 bg-white/[0.08] px-3 py-1 text-xs text-slate-200 shadow-sm shadow-black/10">
+                {item.start}
+              </span>
+            </div>
+
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-300">
+              <span className="inline-flex items-center gap-2">
+                <Building2 className="h-4 w-4 text-green-300" />
+                {item.institution}
+              </span>
+              {item.fileUrl && (
+                <a
+                  href={item.fileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.08] px-3 py-1.5 text-sm text-white transition-colors hover:border-green-400/30 hover:bg-white/12"
+                >
+                  <Link className="h-4 w-4" />
+                  Ver certificado
+                </a>
               )}
-              {item.fileUrl &&
-                <div className="mt-4">
-                  <a href={item.fileUrl} target="_blank" rel="noopener noreferrer" className="text-sm font-mono text-green-300 hover:underline">
-                    <Link className="w-4 h-4 inline-block mr-1" />
-                    Ver certificado
-                  </a>
-                </div>
-              }
             </div>
-          </div>
-          
-          {/* Terminal prompt line */}
-          <div className="mt-2 text-green-400 font-mono text-xs opacity-60">
-            user@portfolio:~/education$ ls -la {item.institution.toLowerCase().replace(/\s+/g, '-')}
-          </div>
-        </motion.div>
-      ))}
+
+            {item.highlights.length > 0 && (
+              <div className="mt-4 space-y-2">
+                {item.highlights.map((highlight) => (
+                  <div key={highlight} className="rounded-2xl border border-white/10 bg-white/[0.07] px-4 py-3 text-sm leading-7 text-slate-50 shadow-sm shadow-black/10">
+                    {highlight}
+                  </div>
+                ))}
+              </div>
+            )}
+          </motion.article>
+        ))}
+      </div>
     </div>
   );
 }

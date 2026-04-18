@@ -1,161 +1,135 @@
 import { useState } from 'react';
-import { Calendar, MapPin, Briefcase, ChevronDown, ChevronUp, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Calendar, MapPin, Briefcase, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 import experienceData from '../content/experience.json';
 
 export default function ExperienceList() {
   const [expandedJobs, setExpandedJobs] = useState<Set<number>>(new Set());
 
   const toggleJobExpansion = (index: number) => {
-    const newExpanded = new Set(expandedJobs);
-    
-    if (!expandedJobs.has(index)) {
-      newExpanded.add(index);
-    } else {
-      newExpanded.delete(index);
-    }
-    
-    setExpandedJobs(newExpanded);
+    const next = new Set(expandedJobs);
+    if (next.has(index)) next.delete(index);
+    else next.add(index);
+    setExpandedJobs(next);
   };
 
   return (
-    <div className="space-y-8">
+    <div className="relative space-y-10 lg:space-y-12">
+      <div className="absolute left-5 top-2 bottom-2 w-px bg-gradient-to-b from-green-400 via-green-400/50 to-transparent lg:left-6" />
+
       {experienceData.map((job, index) => {
-        return <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: index * 0.1 }}
-          viewport={{ once: true }}
-          className="group relative"
-        >
-          {/* Timeline line */}
-          {index < experienceData.length - 1 && (
-            <div className="absolute left-6 top-16 w-0.5 h-full bg-gradient-to-b from-green-400/50 to-transparent"></div>
-          )}
-          
-          {/* Timeline dot */}
-          <div className="absolute left-4 top-6 w-4 h-4 bg-green-400 rounded-full border-2 border-black shadow-lg"></div>
-          
-          {/* Content card */}
-          <div className="ml-12 bg-gradient-to-br from-gray-900/90 via-black/90 to-green-950/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-green-500/30 hover:shadow-green-500/20 transition-all duration-500">
-            {/* Header */}
-            <div className="mb-4">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                <h3 className="text-xl font-bold font-mono text-green-400 mb-1 sm:mb-0">
-                  {job.position}
-                </h3>
-                <div className="flex items-center space-x-2 text-sm">
-                  <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full font-mono border border-green-500/50">
-                    {job.type}
-                  </span>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-1 mb-2">
-                <Briefcase className="w-4 h-4 text-green-400" />
-                <span className="text-green-200 font-mono font-medium">
-                  {job.company}
-                </span>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-4 text-sm text-green-300">
-                <div className="flex items-center space-x-2">
-                  <Calendar className="w-4 h-4" />
-                  <span className="font-mono">{job.start} - {job.end}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4" />
-                  <span className="font-mono">{job.location}</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Description */}
-            <p className="text-green-200 mb-4 font-mono text-sm leading-relaxed">
-              {job.description}
-            </p>
-            
-            {/* Expand Button */}
-            {job.achievements.length > 0 && <div className="mb-4">
-              <button
-                onClick={() => toggleJobExpansion(index)}
-                className="group/btn inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-green-600/80 to-emerald-600/80 hover:from-green-500 hover:to-emerald-500 text-black font-bold font-mono rounded-lg transition-all duration-300 shadow-lg hover:shadow-green-500/50 hover:scale-105 relative overflow-hidden"
-              >
-                {/* Animated background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                
-                {/* Pulse effect */}
-                <div className="absolute inset-0 bg-green-400/30 rounded-lg animate-pulse"></div>
-                
-                {/* Content */}
-                <Zap className="w-4 h-4 relative z-10 group-hover/btn:animate-bounce" />
-                <span className="relative z-10">
-                  {expandedJobs.has(index) ? 'Ocultar logros' : 'Ver logros'}
-                </span>
-                <ChevronDown
-                  className={`w-4 h-4 relative z-10 transition-transform duration-300 ${
-                    expandedJobs.has(index) ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-            </div>}
-            
-            {/* Achievements - Animated */}
-            <motion.div
-              initial={false}
-              animate={{
-                height: expandedJobs.has(index) ? 'auto' : 0,
-                opacity: expandedJobs.has(index) ? 1 : 0,
-                marginBottom: expandedJobs.has(index) ? 16 : 0
-              }}
-              transition={{ 
-                duration: 0.3,
-                ease: "easeInOut"
-              }}
-              className="overflow-hidden"
-            >
-              <div className="space-y-2">
-                {job.achievements.map((achievement, achievementIndex) => (
-                  <motion.div
-                    key={achievementIndex}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ 
-                      opacity: expandedJobs.has(index) ? 1 : 0, 
-                      x: expandedJobs.has(index) ? 0 : -10 
-                    }}
-                    transition={{ 
-                      duration: 0.2, 
-                      delay: expandedJobs.has(index) ? achievementIndex * 0.05 : 0
-                    }}
-                    className="flex items-start space-x-3 text-green-200"
-                  >
-                    <span className="text-green-400 font-mono text-sm mt-0.5"></span>
-                    <span className="text-sm font-mono leading-relaxed">{achievement}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-            
-            {/* Technologies */}
-            <div>
-              <div className="text-green-400 font-mono text-sm mb-3 flex items-center">
-                <span className="mr-2">$</span>
-                <span>ls -la tech_stack/</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {job.technologies.map((tech, techIndex) => (
-                  <div
-                    key={techIndex}
-                    className="px-3 py-1.5 bg-black/90 text-green-200 rounded-lg text-sm font-medium font-mono border border-green-500/50 hover:scale-105 hover:bg-green-500/10 transition-all duration-200 shadow-sm"
-                  >
-                    {tech}
+        const hasAchievements = job.achievements.length > 0;
+        const isCurrent = index === 0;
+
+        return (
+          <motion.article
+            key={`${job.company}-${job.start}`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: index * 0.06 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="relative pl-14 lg:pl-16"
+          >
+            <div className={`absolute left-0 top-7 h-5 w-5 rounded-full border-4 border-black shadow-lg ${isCurrent ? 'bg-green-400 shadow-green-400/60' : 'bg-white/80 shadow-black/30'}`} />
+
+            <div className={`overflow-hidden rounded-[2rem] border bg-white/[0.04] shadow-2xl shadow-black/25 backdrop-blur-xl transition-all duration-300 ${isCurrent ? 'border-green-400/25' : 'border-white/10 hover:border-white/20'}`}>
+              <div className="flex flex-col gap-6 p-6 sm:p-7 lg:flex-row lg:items-start lg:justify-between">
+                <div className="space-y-4">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="inline-flex items-center rounded-full border border-green-400/20 bg-green-400/10 px-3 py-1 text-xs uppercase tracking-[0.22em] text-green-200">
+                      {isCurrent ? 'Actual' : job.type}
+                    </span>
+                    <span className="text-xs uppercase tracking-[0.24em] text-slate-400">
+                      {job.start} {job.end ? `- ${job.end}` : ''}
+                    </span>
                   </div>
-                ))}
+
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-[2rem]">
+                      {job.position}
+                    </h3>
+                    <div className="flex flex-wrap items-center gap-4 text-slate-300">
+                      <div className="flex items-center gap-2">
+                        <Briefcase className="h-4 w-4 text-green-300" />
+                        <span className="text-base font-medium">{job.company}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm">
+                        <Calendar className="h-4 w-4 text-slate-400" />
+                        <span>{job.start} - {job.end}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm">
+                        <MapPin className="h-4 w-4 text-slate-400" />
+                        <span>{job.location}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">
+                    {job.description}
+                  </p>
+                </div>
+
+                <div className="flex flex-col items-start gap-3 lg:min-w-[200px] lg:items-end lg:text-right">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200">
+                    <Sparkles className="h-4 w-4 text-green-300" />
+                    {isCurrent ? 'En curso' : 'Rol concluido'}
+                  </div>
+                  <div className="text-sm text-slate-400">
+                    <span className="block uppercase tracking-[0.2em] text-xs text-slate-500">Ubicación</span>
+                    {job.location}
+                  </div>
+                </div>
+              </div>
+
+              {hasAchievements && (
+                <div className="border-t border-white/10 px-6 py-5 sm:px-7">
+                  <button
+                    onClick={() => toggleJobExpansion(index)}
+                    className="inline-flex items-center gap-2 rounded-xl bg-green-400 px-4 py-3 text-sm font-semibold text-black transition-transform duration-200 hover:scale-[1.01]"
+                  >
+                    {expandedJobs.has(index) ? 'Ocultar logros' : 'Ver logros'}
+                    {expandedJobs.has(index) ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  </button>
+
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: expandedJobs.has(index) ? 'auto' : 0,
+                      opacity: expandedJobs.has(index) ? 1 : 0,
+                      marginTop: expandedJobs.has(index) ? 16 : 0,
+                    }}
+                    transition={{ duration: 0.28, ease: 'easeInOut' }}
+                    className="overflow-hidden"
+                  >
+                    <div className="grid gap-3">
+                      {job.achievements.map((achievement, achievementIndex) => (
+                        <div key={achievementIndex} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-black/20 p-4">
+                          <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-green-400" />
+                          <p className="text-sm leading-7 text-slate-200 sm:text-base">
+                            {achievement}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              )}
+
+              <div className="border-t border-white/10 px-6 py-5 sm:px-7">
+                <div className="mb-3 text-sm uppercase tracking-[0.24em] text-green-300/80">
+                  Stack
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {job.technologies.map((tech) => (
+                    <span key={tech} className="rounded-full border border-white/10 bg-black/30 px-3 py-1.5 text-sm text-slate-200">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>;
+          </motion.article>
+        );
       })}
     </div>
   );

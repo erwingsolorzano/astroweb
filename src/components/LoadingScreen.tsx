@@ -2,21 +2,21 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const loadingMessages = [
-  "Inicializando sistema...",
-  "Cargando módulos principales...",
-  "Estableciendo conexiones...",
-  "Compilando experiencia...",
-  "Renderizando portfolio...",
-  "Sistema listo."
+  "Preparando la experiencia...",
+  "Cargando secciones clave...",
+  "Ajustando detalles visuales...",
+  "Optimizando la navegación...",
+  "Listo para explorar...",
+  "La experiencia está lista."
 ];
 
 const codeSnippets = [
-  "const developer = new ErwingSolorzano();",
-  "developer.initialize();",
-  "loading.modules(['React', 'TypeScript', 'Astro']);",
-  "system.compile(experience);",
-  "portfolio.render();",
-  "console.log('Welcome to the Matrix...');"
+  "const profile = new Portfolio();",
+  "profile.load();",
+  "profile.prepare(['React', 'TypeScript', 'Astro']);",
+  "experience.refine();",
+  "portfolio.display();",
+  "console.log('Welcome.');"
 ];
 
 interface LoadingScreenProps {
@@ -156,30 +156,29 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps = {}) {
                 className="mb-12"
               >
                 <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-green-400/50 border border-green-400/50">
-                  <span className="text-black font-bold text-3xl font-mono">AR</span>
+                  <span className="text-black font-bold text-3xl font-mono">ES</span>
                 </div>
               </motion.div>
 
-              {/* Terminal Window */}
+              {/* Status panel */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="bg-gray-900/90 backdrop-blur-sm rounded-lg border border-green-400/30 shadow-2xl shadow-green-400/20 mb-8"
               >
-                {/* Terminal Header */}
+                {/* Header */}
                 <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 bg-green-400/10 border-b border-green-400/30 rounded-t-lg">
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   </div>
-                  <span className="text-green-400 font-mono text-xs sm:text-sm">erwing@portfolio:~$</span>
+                  <span className="text-green-400 font-mono text-xs sm:text-sm">erwing@portfolio</span>
                 </div>
 
                 {/* Terminal Content */}
                 <div className="p-4 sm:p-6 space-y-3 sm:space-y-4 min-h-[100px] sm:min-h-[120px]">
-                  {/* System Message */}
                   <div className="flex items-center space-x-2">
                     <span className="text-green-400 font-mono text-sm"></span>
                     <span className="text-green-200 font-mono text-xs sm:text-sm break-words">
@@ -188,7 +187,6 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps = {}) {
                     </span>
                   </div>
 
-                  {/* Code Line */}
                   {currentCode && (
                     <div className="flex items-center space-x-2">
                       <span className="text-green-400 font-mono text-sm">$</span>
@@ -217,7 +215,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps = {}) {
                   />
                 </div>
                 <div className="flex justify-between mt-2 text-xs font-mono text-green-300">
-                  <span>Inicializando...</span>
+                  <span>Preparando...</span>
                   <span>{Math.round(progress)}%</span>
                 </div>
               </motion.div>
@@ -248,7 +246,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps = {}) {
                 transition={{ delay: 1 }}
                 className="text-green-400/60 font-mono text-xs mt-6 sm:mt-8 px-2"
               >
-                Creado y desarrollado por Erwing Solorzano © 2025
+                Diseñado y desarrollado por Erwing Solorzano © 2025
               </motion.p>
             </div>
           </motion.div>
