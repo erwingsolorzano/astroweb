@@ -15,6 +15,21 @@
     "featured": true
   },
   {
+    "name": "El Juego del Impostor",
+    "description": "Juego de deducción social por rondas (pass-and-play) con roles secretos, votaciones y estética retro CRT.",
+    "impact": [
+      "Entretenimiento multijugador sin servidor: hasta 12 jugadores, lógica de impostores y cronómetro de debate."
+    ],
+    "stack": ["React", "Vite", "Material UI", "GSAP", "Context API"],
+    "links": {
+      "demo": "https://elimpostor-juego.vercel.app/"
+    },
+    "images": [
+      "./impostor.png"
+    ],
+    "featured": false
+  },
+  {
     "name": "AstroWeb Portfolio",
     "description": "Portfolio personal con formulario de contacto y una presentación enfocada en claridad.",
     "impact": [

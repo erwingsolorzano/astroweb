@@ -1,22 +1,14 @@
 import { useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Mail, Github, Linkedin, ArrowRight, Search, Send } from 'lucide-react';
-import { SiReact, SiTypescript, SiTailwindcss, SiNextdotjs, SiNodedotjs } from 'react-icons/si';
 import aboutData from '../content/about.json';
 
-const focusTags = [
-  { label: 'React', icon: SiReact, iconClassName: 'text-[#61dafb]' },
-  { label: 'TypeScript', icon: SiTypescript, iconClassName: 'text-[#3178c6]' },
-  { label: 'Tailwind CSS', icon: SiTailwindcss, iconClassName: 'text-[#38bdf8]' },
-  { label: 'Next.js', icon: SiNextdotjs, iconClassName: 'text-white' },
-  { label: 'Node.js', icon: SiNodedotjs, iconClassName: 'text-[#339933]' },
-] as const;
 
 export default function HeroAbout() {
   const heroRef = useRef<HTMLElement | null>(null);
   const [isContactHovered, setIsContactHovered] = useState(false);
   const [isProjectsHovered, setIsProjectsHovered] = useState(false);
-  const containerVariants = {
+const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -29,20 +21,6 @@ export default function HeroAbout() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 18 },
-    show: { opacity: 1, y: 0 },
-  };
-
-  const chipContainerVariants = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.24,
-      },
-    },
-  };
-
-  const chipVariants = {
-    hidden: { opacity: 0, y: -14 },
     show: { opacity: 1, y: 0 },
   };
 
@@ -107,23 +85,6 @@ export default function HeroAbout() {
             {aboutData.bio}
           </motion.p>
 
-          <motion.div variants={chipContainerVariants} initial="hidden" animate="show" className="flex flex-wrap gap-3">
-            {focusTags.map((tag) => (
-              <motion.span
-                key={tag.label}
-                variants={chipVariants}
-                whileHover={{ y: -3, scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="group inline-flex min-h-12 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 backdrop-blur-sm transition-colors duration-300 hover:border-green-400/40 hover:bg-white/10 hover:shadow-lg hover:shadow-green-400/10"
-              >
-                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-current transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 group-hover:bg-white/15">
-                  {tag.icon ? <tag.icon className={`h-3.5 w-3.5 ${tag.iconClassName}`} aria-hidden="true" /> : null}
-                </span>
-                <span className="transition-transform duration-300 group-hover:-translate-y-px">{tag.label}</span>
-              </motion.span>
-            ))}
-          </motion.div>
 
           <motion.div variants={itemVariants} className="flex flex-col gap-3 sm:flex-row">
             <motion.button
@@ -240,16 +201,16 @@ export default function HeroAbout() {
         >
           <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-green-400/10 via-transparent to-cyan-400/10 blur-2xl" />
 
-          <motion.div style={{ y: heroCardY, scale: heroCardScale }} className="relative mx-auto w-full max-w-[360px] overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-2xl shadow-black/40 backdrop-blur-xl lg:max-w-[390px]">
-            <div className="relative p-3 sm:p-4">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 via-transparent to-transparent" />
-              <img
-                src={aboutData.avatar}
-                alt={aboutData.name}
-                className="relative z-10 aspect-[4/5] w-full rounded-[1.5rem] object-contain object-center bg-black/10 shadow-2xl shadow-black/30"
-                loading="eager"
-              />
-            </div>
+          <motion.div style={{ y: heroCardY, scale: heroCardScale }} className="relative mx-auto w-full max-w-[360px] overflow-hidden rounded-[2rem] border border-white/10 bg-black shadow-2xl shadow-black/40 lg:max-w-[390px]">
+            <img
+              src={aboutData.avatar}
+              alt={aboutData.name}
+              className="aspect-[4/5] w-full object-cover object-center"
+              loading="eager"
+            />
+            {/* vignette: corners + bottom fade */}
+            <div className="pointer-events-none absolute inset-0 rounded-[2rem] shadow-[inset_0_0_60px_30px_rgba(0,0,0,0.75)]" />
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent" />
           </motion.div>
         </motion.div>
       </div>
