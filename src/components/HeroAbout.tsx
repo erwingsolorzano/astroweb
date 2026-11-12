@@ -15,7 +15,7 @@ const ctaCircle =
 export default function HeroAbout() {
   return (
     <>
-      <div className="relative overflow-hidden bg-mandarin px-5 pb-10 pt-6 md:px-10 md:pt-6">
+      <div className="relative overflow-hidden bg-mandarin px-5 pb-7 pt-4 md:px-10 md:pb-10 md:pt-6">
         {/* Decorative cream blobs */}
         <div
           aria-hidden="true"
@@ -40,14 +40,14 @@ export default function HeroAbout() {
               className="hero-photo relative z-[2] hidden -rotate-[4deg] rounded-[999px_999px_28px_28px] border-[6px] border-cream object-cover md:block"
             />
           </span>
-          <span aria-hidden="true" className="hero-last relative z-[3] block text-right text-forest">
+          <span aria-hidden="true" className="hero-last relative z-[3] block text-forest">
             {lastName}
           </span>
         </h1>
 
         {/* Bottom row */}
-        <div className="relative z-[3] mt-8 grid grid-cols-1 items-end gap-8 md:mt-0 lg:grid-cols-[minmax(0,1fr)_auto_auto] lg:gap-10">
-          <div className="flex max-w-[440px] flex-col gap-[22px]">
+        <div className="relative z-[3] mt-5 grid grid-cols-1 items-end gap-5 md:mt-0 md:gap-8 lg:grid-cols-[minmax(0,1fr)_auto_auto] lg:gap-10">
+          <div className="flex max-w-[440px] flex-col gap-3 md:gap-[22px]">
             <div className="flex items-center gap-5">
               <img
                 src={aboutData.avatar}
@@ -93,11 +93,11 @@ export default function HeroAbout() {
 
       {/* Checker band + static stack list */}
       <div aria-hidden="true" className="h-[22px] bg-checker" />
-      <div className="bg-forest px-5 py-[22px] md:px-10">
+      <div className="bg-forest px-5 py-4 md:px-10 md:py-[22px]">
         <h2 className="sr-only">Stack</h2>
-        <ul className="flex flex-wrap items-baseline gap-x-[22px] gap-y-1.5 font-display text-2xl uppercase text-crest md:text-[30px]">
+        <ul className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 font-display text-xl uppercase md:gap-x-[22px] md:gap-y-1.5 text-crest md:text-[30px]">
           {aboutData.stack.map((tech, index) => (
-            <li key={tech} className="flex items-baseline gap-x-[22px]">
+            <li key={tech} className="flex items-baseline gap-x-3.5 md:gap-x-[22px]">
               {tech}
               {index < aboutData.stack.length - 1 && (
                 <span aria-hidden="true" className="text-mandarin">
