@@ -52,11 +52,11 @@
   /*
    * Hero name. Desktop sizes come from the 1280px artboard (1200px content)
    * and scale down with --u, capped by width (never overflows) and by height
-   * (bio, social links and CTA stay in the first screen).
+   * (the hero plus the stack band fit the first screen).
    */
   .hero-name {
-    --u: max(0.4px, min(1px, calc((100vw - 80px) / 1200), calc((100vh - 470px) / 560)));
-    --u: max(0.4px, min(1px, calc((100vw - 80px) / 1200), calc((100svh - 470px) / 560)));
+    --u: max(0.4px, min(1px, calc((100vw - 80px) / 1200), calc((100vh - 440px) / 560)));
+    --u: max(0.4px, min(1px, calc((100vw - 80px) / 1200), calc((100svh - 440px) / 560)));
   }
 
   .hero-first {
@@ -70,6 +70,12 @@
   }
 
   @media (min-width: 768px) {
+    /* The name is one composition (1200u wide), centered when height-capped */
+    .hero-name {
+      width: calc(1200 * var(--u));
+      margin-inline: auto;
+    }
+
     .hero-first {
       font-size: calc(300 * var(--u));
     }

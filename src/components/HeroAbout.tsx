@@ -14,8 +14,8 @@ const ctaCircle =
 
 export default function HeroAbout() {
   return (
-    <>
-      <div className="relative overflow-hidden bg-mandarin px-5 pb-7 pt-4 md:px-10 md:pb-10 md:pt-6">
+    <div className="flex min-h-[calc(100svh-56px)] flex-col md:min-h-[calc(100svh-66px)]">
+      <div className="relative flex flex-1 flex-col overflow-hidden bg-mandarin px-5 pb-7 pt-4 md:px-10 md:pb-10 md:pt-6">
         {/* Decorative cream blobs */}
         <div
           aria-hidden="true"
@@ -27,7 +27,7 @@ export default function HeroAbout() {
         />
 
         {/* Name */}
-        <h1 className="hero-name relative m-0 pt-2 font-display font-normal uppercase leading-[0.86] tracking-[-0.01em]">
+        <h1 className="hero-name relative pt-2 font-display font-normal uppercase leading-[0.86] tracking-[-0.01em]">
           <span className="sr-only">{aboutData.name}, {aboutData.role}</span>
           <span aria-hidden="true" className="flex items-start">
             <span className="hero-first relative z-[1] block text-crest">{firstName}</span>
@@ -40,13 +40,13 @@ export default function HeroAbout() {
               className="hero-photo relative z-[2] hidden -rotate-[4deg] rounded-[999px_999px_28px_28px] border-[6px] border-cream object-cover md:block"
             />
           </span>
-          <span aria-hidden="true" className="hero-last relative z-[3] block text-forest">
+          <span aria-hidden="true" className="hero-last relative z-[3] block text-forest md:text-right">
             {lastName}
           </span>
         </h1>
 
         {/* Bottom row */}
-        <div className="relative z-[3] mt-5 grid grid-cols-1 items-end gap-5 md:mt-0 md:gap-8 lg:grid-cols-[minmax(0,1fr)_auto_auto] lg:gap-10">
+        <div className="relative z-[3] mt-auto grid grid-cols-1 items-end gap-5 pt-5 md:gap-8 md:pt-0 lg:grid-cols-[minmax(0,1fr)_auto_auto] lg:gap-10">
           <div className="flex max-w-[440px] flex-col gap-3 md:gap-[22px]">
             <div className="flex items-center gap-5">
               <img
@@ -108,6 +108,6 @@ export default function HeroAbout() {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 }
