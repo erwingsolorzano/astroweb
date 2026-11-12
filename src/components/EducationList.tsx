@@ -1,115 +1,61 @@
-import { motion } from 'framer-motion';
-import { Calendar, Building2, Link, GraduationCap, Award } from 'lucide-react';
 import educationData from '../content/education.json';
 
-const mainEducation = educationData[0];
-const certifications = educationData.slice(1);
+interface EducationItem {
+  institution: string;
+  program: string;
+  degree: string;
+  start: string;
+  end: string;
+  highlights: string[];
+  fileUrl?: string;
+}
+
+const education = educationData as EducationItem[];
 
 export default function EducationList() {
   return (
-    <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
-      <motion.article
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35 }}
-        viewport={{ once: true, amount: 0.2 }}
-        className="overflow-hidden rounded-[2rem] border border-white/12 bg-gradient-to-br from-white/[0.1] via-white/[0.06] to-white/[0.035] shadow-2xl shadow-black/25 backdrop-blur-xl"
-      >
-        <div className="border-b border-white/10 bg-black/10 px-6 py-4 sm:px-7">
-          <div className="flex items-center gap-3">
-            <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-green-400/20 text-green-200 border border-green-400/20 shadow-[0_0_24px_rgba(74,222,128,0.15)]">
-              <GraduationCap className="h-5 w-5" />
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-green-300/80">Formación principal</p>
-              <h3 className="mt-1 text-2xl font-semibold tracking-tight text-white">{mainEducation.program}</h3>
-            </div>
-          </div>
-        </div>
+    <section id="educacion" className="scroll-mt-4 bg-cream px-5 py-16 md:px-10 md:py-24">
+      <div className="mb-10 flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
+        <h2 data-reveal className="section-title text-mandarin">
+          Educación
+        </h2>
+        <span className="label text-[13px] text-forest">Grado + certificaciones</span>
+      </div>
 
-        <div className="space-y-6 p-6 sm:p-7 lg:p-8">
-          <div className="flex flex-wrap items-center gap-3 text-sm text-slate-300">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.08] px-3 py-1.5 shadow-sm shadow-black/10">
-              <Building2 className="h-4 w-4 text-green-300" />
-              <span>{mainEducation.institution}</span>
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.08] px-3 py-1.5 shadow-sm shadow-black/10">
-              <Calendar className="h-4 w-4 text-green-300" />
-              <span>{mainEducation.start} - {mainEducation.end}</span>
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-400/15 px-3 py-1.5 text-green-50 shadow-[0_0_20px_rgba(74,222,128,0.08)]">
-              <Award className="h-4 w-4" />
-              <span>{mainEducation.degree}</span>
-            </div>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-2">
-            {mainEducation.highlights.map((highlight) => (
-              <div key={highlight} className="rounded-2xl border border-white/10 bg-white/[0.07] px-4 py-4 shadow-sm shadow-black/10">
-                <p className="text-sm leading-7 text-slate-50">{highlight}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="rounded-2xl border border-white/10 bg-white/[0.07] px-4 py-4 shadow-sm shadow-black/10">
-            <p className="text-xs uppercase tracking-[0.28em] text-slate-400">Resumen</p>
-            <p className="mt-2 text-sm leading-7 text-slate-100">
-              Base académica sólida orientada a gestión de sistemas, con foco en resolver problemas técnicos y construir soluciones estables.
-            </p>
-          </div>
-        </div>
-      </motion.article>
-
-      <div className="space-y-4">
-        {certifications.map((item, index) => (
-          <motion.article
-            key={`${item.institution}-${item.program}`}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.08 }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="rounded-[1.75rem] border border-white/12 bg-gradient-to-br from-white/[0.1] via-white/[0.06] to-white/[0.035] p-5 shadow-xl shadow-black/20 backdrop-blur-xl transition-all duration-300 hover:from-white/[0.12] hover:to-white/[0.06]"
+      <ul className="grid grid-cols-1 gap-5 lg:grid-cols-3">
+        {education.map((item, index) => (
+          <li
+            key={item.program}
+            data-reveal
+            style={{ '--reveal-delay': `${index * 120}ms` } as React.CSSProperties}
           >
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.28em] text-green-300/80">Certificación</p>
-                <h4 className="mt-1 text-xl font-semibold tracking-tight text-white">{item.program}</h4>
-              </div>
-              <span className="rounded-full border border-white/10 bg-white/[0.08] px-3 py-1 text-xs text-slate-200 shadow-sm shadow-black/10">
-                {item.start}
+            <article className="flex h-full flex-col gap-3 rounded-3xl bg-cream-2 p-7 transition-[transform,background-color] duration-[400ms] ease-snap hover:bg-crest focus-within:bg-crest motion-safe:hover:-translate-y-1.5">
+              <span className="label text-forest">
+                {item.start === item.end ? item.start : `${item.start} — ${item.end}`} · {item.degree}
               </span>
-            </div>
-
-            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-300">
-              <span className="inline-flex items-center gap-2">
-                <Building2 className="h-4 w-4 text-green-300" />
-                {item.institution}
-              </span>
+              <h3 className="m-0 font-display text-[clamp(36px,3.4vw,44px)] font-normal uppercase leading-[0.9]">
+                {item.program}
+              </h3>
+              <span className="text-base font-semibold text-forest">{item.institution}</span>
+              {item.highlights.map((note) => (
+                <p key={note} className="m-0 text-[15px] leading-normal">
+                  {note}
+                </p>
+              ))}
               {item.fileUrl && (
                 <a
                   href={item.fileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.08] px-3 py-1.5 text-sm text-white transition-colors hover:border-green-400/30 hover:bg-white/12"
+                  className="label mt-1.5 inline-flex min-h-11 items-center self-start rounded-full bg-ink px-4 text-cream"
                 >
-                  <Link className="h-4 w-4" />
-                  Ver certificado
+                  Ver certificado ↗<span className="sr-only"> de {item.program} (abre en una pestaña nueva)</span>
                 </a>
               )}
-            </div>
-
-            {item.highlights.length > 0 && (
-              <div className="mt-4 space-y-2">
-                {item.highlights.map((highlight) => (
-                  <div key={highlight} className="rounded-2xl border border-white/10 bg-white/[0.07] px-4 py-3 text-sm leading-7 text-slate-50 shadow-sm shadow-black/10">
-                    {highlight}
-                  </div>
-                ))}
-              </div>
-            )}
-          </motion.article>
+            </article>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 }

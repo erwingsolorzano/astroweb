@@ -1,47 +1,49 @@
 [
-    {
-    "name": "Wedder",
-    "description": "Tu asistente de bodas.",
-    "impact": [
-      "Planificación de su boda, gestión de invitados y presupuesto."
+  {
+    "name": "Weddin",
+    "kind": "Producto",
+    "description": "Asistente para organizar una boda: invitados, presupuesto y planificación en un solo lugar.",
+    "stack": [
+      "Next.js",
+      "Prisma",
+      "Supabase",
+      "Vercel"
     ],
-    "stack": ["Next.js", "Prisma", "Supabase", "Vercel"],
     "links": {
       "demo": "https://wedder.vercel.app/"
     },
-    "images": [
-      "./wedder.png"
-    ],
+    "image": "./wedder.png",
     "featured": true
   },
   {
     "name": "El Juego del Impostor",
-    "description": "Juego de deducción social por rondas (pass-and-play) con roles secretos, votaciones y estética retro CRT.",
-    "impact": [
-      "Entretenimiento multijugador sin servidor: hasta 12 jugadores, lógica de impostores y cronómetro de debate."
+    "kind": "Juego",
+    "description": "Juego de deducción social para jugar pasando el teléfono. Roles secretos, votaciones y cronómetro de debate para hasta 12 jugadores, con estética CRT retro.",
+    "stack": [
+      "React",
+      "Vite",
+      "Material UI",
+      "GSAP"
     ],
-    "stack": ["React", "Vite", "Material UI", "GSAP", "Context API"],
     "links": {
       "demo": "https://elimpostor-juego.vercel.app/"
     },
-    "images": [
-      "./impostor.png"
-    ],
+    "image": "./impostor.png",
     "featured": false
   },
   {
-    "name": "AstroWeb Portfolio",
-    "description": "Portfolio personal con formulario de contacto y una presentación enfocada en claridad.",
-    "impact": [
-      "Refuerza la presencia profesional y la percepción de marca"
+    "name": "AstroWeb",
+    "kind": "Este portfolio",
+    "description": "Portfolio personal construido con Astro y React, con formulario de contacto vía EmailJS.",
+    "stack": [
+      "Astro",
+      "React",
+      "EmailJS"
     ],
-    "stack": ["Astro", "Next.js", "React", "emailjs", "Vercel"],
     "links": {
       "github": "https://github.com/erwingsolorzano/astroweb"
     },
-    "images": [
-      "./astro-bg.webp"
-    ],
+    "image": "./astro-bg.webp",
     "featured": false
   }
 ]

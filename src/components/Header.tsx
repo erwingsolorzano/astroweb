@@ -1,164 +1,122 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const navigation = [
-  { name: 'Sobre mí', href: '#sobre-mi' },
+  { name: 'Proyectos', href: '#proyectos' },
   { name: 'Experiencia', href: '#experiencia' },
   { name: 'Educación', href: '#educacion' },
-  { name: 'Proyectos', href: '#proyectos' },
   { name: 'Contacto', href: '#contacto' },
 ];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('sobre-mi');
-  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    // Handle scroll for transparent header
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    if (!isMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsMenuOpen(false);
     };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Intersection Observer for active section
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: '-20% 0px -60% 0px',
-        threshold: 0.3,
-      }
-    );
-
-    // Observe all sections
-    navigation.forEach(({ href }) => {
-      const element = document.querySelector(href);
-      if (element) observer.observe(element);
-    });
+    window.addEventListener('keydown', onKeyDown);
 
     return () => {
-      observer.disconnect();
-      window.removeEventListener('scroll', handleScroll);
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
     };
-  }, []);
-  const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    event.preventDefault();
-    setIsMenuOpen(false);
+  }, [isMenuOpen]);
 
-    const target = document.querySelector(href) as HTMLElement | null;
-    if (!target) return;
-
-    window.setTimeout(() => {
-      const headerHeight = 80;
-      const elementPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-      window.scrollTo({ top: elementPosition, behavior: 'smooth' });
-      window.history.replaceState(null, '', href);
-    }, 320);
-  };
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-black/75 border-b border-white/10 shadow-2xl shadow-black/20 md:backdrop-blur-2xl' 
-          : 'bg-black/40 md:bg-transparent border-b border-transparent'
-      }`}
-      style={{
-        transform: 'translate3d(0, 0, 0)',
-        backfaceVisibility: 'hidden',
-        perspective: '1000px'
-      }}
-    >
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-18 py-2">
-          {/* Logo */}
-          <div className="flex items-center">
-            <a href="#sobre-mi" aria-label="Ir al inicio" className="inline-flex items-center">
-              <img
-                src="./iconES.webp"
-                alt="Logo de Erwing Solorzano"
-                className="w-10 h-10 object-contain transition-transform duration-300 cursor-pointer hover:scale-105"
-              />
-            </a>
-          </div>
+    <header className="relative z-20 bg-mandarin px-5 pt-3 md:px-10 md:pt-[22px]">
+      <div className="grid grid-cols-[1fr_auto] items-center md:grid-cols-[1fr_auto_1fr]">
+        <a
+          href="#sobre-mi"
+          aria-label="Erwing Solórzano, ir al inicio"
+          className="inline-flex min-h-11 min-w-11 items-center justify-self-start font-display text-[30px] leading-none tracking-[-0.01em] text-forest"
+        >
+          ES
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+        <nav aria-label="Principal" className="hidden md:block">
+          <ul className="flex gap-11">
             {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(event) => handleNavClick(event, item.href)}
-                aria-current={activeSection === item.href.slice(1) ? 'page' : undefined}
-                className={`px-4 py-2 text-sm font-medium tracking-tight rounded-full transition-all duration-300 hover:scale-105 ${
-                  activeSection === item.href.slice(1)
-                    ? 'text-black bg-green-400 shadow-lg shadow-green-400/20'
-                    : 'text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
-                }`}
-              >
-                {item.name}
-              </a>
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  className="label inline-flex min-h-11 items-center font-semibold text-ink transition-colors duration-200 hover:text-cream"
+                >
+                  {item.name}
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
+        </nav>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-menu"
-                className="p-2 rounded-full bg-white/5 border border-white/10 hover:scale-105 transition-all duration-300"
+        <span aria-hidden="true" className="hidden md:block" />
+
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen(true)}
+          aria-label="Abrir menú"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          className="grid h-11 w-11 place-items-center rounded-full bg-forest text-crest md:hidden"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+            <path d="M3 6h14M3 14h14" />
+          </svg>
+        </button>
+      </div>
+
+      {isMenuOpen && (
+        <div
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menú"
+          className="fixed inset-0 z-50 flex flex-col bg-forest px-5 pb-10 pt-3 text-crest md:hidden"
+        >
+          <div className="flex items-center justify-between">
+            <a
+              href="#sobre-mi"
+              onClick={closeMenu}
+              className="inline-flex min-h-11 min-w-11 items-center font-display text-[30px] leading-none text-crest"
             >
-              {isMenuOpen ? (
-                <X className="h-6 w-6 text-white" />
-              ) : (
-                <Menu className="h-6 w-6 text-white" />
-              )}
+              ES
+            </a>
+            <button
+              type="button"
+              onClick={closeMenu}
+              aria-label="Cerrar menú"
+              autoFocus
+              className="grid h-11 w-11 place-items-center rounded-full bg-crest text-forest"
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+                <path d="M3 3l12 12M15 3L3 15" />
+              </svg>
             </button>
           </div>
-        </div>
 
-        {/* Mobile Navigation */}
-        <AnimatePresence mode="wait">
-          {isMenuOpen && (
-            <motion.div
-              id="mobile-menu"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden border-t border-white/10 bg-black/90 backdrop-blur-2xl"
-            >
-              <div className="py-4 space-y-2">
-                {navigation.map((item) => (
+          <nav aria-label="Principal móvil" className="mt-10">
+            <ul className="flex flex-col">
+              {navigation.map((item) => (
+                <li key={item.href} className="border-t-2 border-forest-line last:border-b-2">
                   <a
-                    key={item.name}
                     href={item.href}
-                    onClick={(event) => handleNavClick(event, item.href)}
-                    aria-current={activeSection === item.href.slice(1) ? 'page' : undefined}
-                    className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium tracking-tight transition-all duration-300 ${
-                      activeSection === item.href.slice(1)
-                        ? 'text-black bg-green-400 shadow-lg shadow-green-400/20'
-                        : 'text-slate-200 hover:text-white hover:bg-white/5'
-                    }`}
+                    onClick={closeMenu}
+                    className="flex min-h-[64px] items-center font-display text-[30px] uppercase leading-none text-crest"
                   >
                     {item.name}
                   </a>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

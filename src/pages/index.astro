@@ -2,63 +2,25 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header';
 import HeroAbout from '../components/HeroAbout';
-import EducationList from '../components/EducationList';
-import ExperienceList from '../components/ExperienceList';
 import ProjectsGrid from '../components/ProjectsGrid';
+import ExperienceList from '../components/ExperienceList';
+import EducationList from '../components/EducationList';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
-import ScrollToTop from '../components/ScrollToTop';
-import Section from '../components/Section';
 ---
 
 <BaseLayout>
   <Header client:load />
-  
+
   <main id="main-content">
-    <!-- Hero/About Section -->
-    <section id="sobre-mi" class="scroll-mt-20">
-      <HeroAbout client:load />
+    <section id="sobre-mi" aria-label="Presentación">
+      <HeroAbout />
     </section>
-    
-    <!-- Experience Section -->
-    <Section 
-      id="experiencia" 
-      title="Experiencia" 
-      subtitle="Trayectoria profesional orientada a producto, ejecución y mejora continua"
-      className="bg-gradient-to-br from-black via-green-950/20 to-gray-900"
-    >
-      <ExperienceList client:load />
-    </Section>
-    
-    <!-- Education Section -->
-    <Section 
-      id="educacion" 
-      title="Educación" 
-      subtitle="Formación académica y certificaciones que sostienen mi práctica profesional"
-      className="bg-gradient-to-br from-green-950/20 via-black to-gray-900"
-    >
-      <EducationList client:load />
-    </Section>
-    
-    <!-- Projects Section -->
-    <Section 
-      id="proyectos" 
-      title="Proyectos" 
-      subtitle="Selección de trabajos que muestran criterio, ejecución y foco en detalle"
-      className="bg-gradient-to-br from-gray-900 via-black to-green-950/20"
-    >
-      <ProjectsGrid client:load />
-    </Section>
-    
-    <!-- Contact Section -->
-    <Section 
-      id="contacto"
-      className="bg-gradient-to-br from-black via-green-950/20 to-gray-900"
-    >
-      <ContactForm client:load />
-    </Section>
+    <ProjectsGrid />
+    <ExperienceList />
+    <EducationList />
+    <ContactForm client:visible />
   </main>
-  
+
   <Footer />
-  <ScrollToTop client:load />
 </BaseLayout>

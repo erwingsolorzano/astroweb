@@ -3,42 +3,66 @@
     "company": "Ciudadela Management",
     "position": "Desarrollador Full Stack",
     "type": "Tiempo completo",
-    "location": "Remoto, Madrid - España",
-    "start": "Septiembre 2025",
-    "end": "Presente",
-    "description": "Formo parte del equipo de ingeniería que analiza, diseña y entrega mejoras continuas para hacer el sistema más claro y eficiente.",
-    "achievements": [
-    ],
-    "technologies": ["React", "TypeScript", "Next.js", "Tailwind CSS", "GraphQL", "AWS"]
+    "location": "Remoto · Madrid",
+    "start": "Sep 2025",
+    "end": "Hoy",
+    "current": true,
+    "description": "Formo parte del equipo de ingeniería que analiza, diseña y entrega mejoras continuas para que el sistema sea más claro y eficiente.",
+    "achievements": [],
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Tailwind",
+      "GraphQL",
+      "AWS"
+    ]
   },
   {
     "company": "Equasystems S.A.S",
     "position": "Desarrollador Full Stack",
     "type": "Tiempo completo",
-    "location": "Presencial, Guayaquil - Ecuador",
-    "start": "Julio 2022",
-    "end": "Septiembre 2025",
-    "description": "Integré el equipo de desarrollo responsable de nuevos módulos para clientes del sector seguros, mejorando la experiencia de usuario y el rendimiento del sistema.",
+    "location": "Guayaquil, Ecuador",
+    "start": "Jul 2022",
+    "end": "Sep 2025",
+    "current": false,
+    "description": "Desarrollo de nuevos módulos para clientes del sector seguros, con foco en experiencia de usuario y rendimiento.",
     "achievements": [
-      "Implementé un sistema de carga de datos que redujo tiempos operativos en un 30%",
-      "Optimicé el módulo de reclamos para acelerar la gestión y mejorar la consistencia de datos",
-      "Colaboré con equipos internacionales para integrar APIs y servicios de terceros"
+      "Sistema de carga de datos que redujo los tiempos operativos un 30%.",
+      "Optimización del módulo de reclamos: gestión más rápida y datos más consistentes.",
+      "Integración de APIs y servicios de terceros junto a equipos internacionales."
     ],
-    "technologies": ["JavaScript", "React", "Node.js", "CSS", "Bootstrap", "ejs", "jQuery", "MySQL"]
+    "technologies": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "MySQL",
+      "jQuery",
+      "Bootstrap"
+    ]
   },
   {
     "company": "Grant Thornton Ecuador",
-    "position": "Lider de TI",
+    "position": "Líder de TI",
     "type": "Tiempo completo",
-    "location": "Presencial, Guayaquil - Ecuador",
-    "start": "Noviembre 2020",
-    "end": "Julio 2022",
-    "description": "Mi primera experiencia profesional, donde puse en práctica conocimientos de TI y consolidé bases de desarrollo backend y frontend moderno.",
+    "location": "Guayaquil, Ecuador",
+    "start": "Nov 2020",
+    "end": "Jul 2022",
+    "current": false,
+    "description": "Primer rol profesional: gestión de TI y las bases de mi trabajo en frontend y backend.",
     "achievements": [
-      "Desarrollé landing pages para campañas de cursos y seminarios",
-      "Actualicé y mantuve la aplicación propietaria para la gestión de comprobantes electrónicos",
-      "Implementé un aula virtual para capacitaciones internas"
+      "Landing pages para campañas de cursos y seminarios.",
+      "Mantenimiento de la aplicación interna de comprobantes electrónicos.",
+      "Aula virtual para capacitaciones internas."
     ],
-    "technologies": ["HTML5", "CSS3", "JavaScript", "TypeScript", "Bootstrap", "jQuery", "Git"]
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "TypeScript",
+      "Bootstrap",
+      "jQuery",
+      "Git"
+    ]
   }
 ]

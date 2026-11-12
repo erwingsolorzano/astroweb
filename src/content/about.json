@@ -1,7 +1,7 @@
 {
   "name": "Erwing Solórzano",
   "role": "Desarrollador Full Stack",
-  "bio": "Diseño y desarrollo experiencias web rápidas, claras y útiles, con foco en conversión, rendimiento y una ejecución cuidada.",
+  "bio": "Desarrollo productos web de principio a fin, cuidando lo que se ve y lo que no.",
   "bullets": [
     "Stack principal: Next.js, React, Node.js, TypeScript y Tailwind CSS",
     "Enfoque en rendimiento, mantenibilidad y producto"
@@ -12,5 +12,19 @@
     "email": "erwing1394@gmail.com",
     "cvUrl": "#"
   },
-  "avatar": "./avatar.webp"
+  "avatar": "./avatar.webp",
+  "since": "2020",
+  "stack": [
+    "React",
+    "TypeScript",
+    "Next.js",
+    "Node.js",
+    "GraphQL",
+    "AWS",
+    "Prisma",
+    "Supabase",
+    "Tailwind",
+    "Astro",
+    "MySQL"
+  ]
 }

@@ -9,37 +9,29 @@ const seo = {
 ---
 
 <BaseLayout seo={seo}>
-  <div class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+  <main id="main-content" class="flex min-h-screen items-center justify-center bg-mandarin px-5 md:px-10">
     <div class="text-center">
-      <div class="mb-8">
-        <h1 class="text-9xl font-bold text-white/10">404</h1>
-      </div>
-      
-      <h2 class="text-3xl font-semibold text-white mb-4">
+      <h1 class="m-0 font-display text-[clamp(120px,30vw,300px)] font-normal leading-[0.8] text-crest">404</h1>
+      <h2 class="mb-4 mt-6 font-display text-[clamp(32px,5vw,64px)] font-normal uppercase leading-[0.9] text-forest">
         Página no encontrada
       </h2>
-      
-      <p class="text-lg text-slate-300 mb-8 max-w-md mx-auto">
+      <p class="mx-auto mb-8 max-w-md text-[17px] leading-normal text-ink">
         La página que buscas no existe o fue movida. Puedes volver al inicio para seguir explorando.
       </p>
-      
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a
-          href="/"
-          class="inline-flex items-center px-6 py-3 rounded-xl bg-green-400 text-black font-medium transition-colors hover:bg-green-300"
-        >
-          <Home class="w-5 h-5 mr-2" />
+      <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/" class="label inline-flex min-h-11 items-center gap-2 rounded-full bg-forest px-6 text-cream transition-colors hover:bg-ink">
+          <Home class="h-4 w-4" />
           Ir al inicio
         </a>
-        
         <button
+          type="button"
           onclick="history.back()"
-          class="inline-flex items-center px-6 py-3 rounded-xl border border-white/10 bg-white/5 text-white font-medium transition-colors hover:bg-white/10"
+          class="label inline-flex min-h-11 items-center gap-2 rounded-full bg-ink px-6 text-cream transition-colors hover:bg-forest"
         >
-          <ArrowLeft class="w-5 h-5 mr-2" />
+          <ArrowLeft class="h-4 w-4" />
           Volver atrás
         </button>
       </div>
     </div>
-  </div>
+  </main>
 </BaseLayout>

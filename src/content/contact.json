@@ -1,26 +1,28 @@
 {
   "title": "Hablemos",
-  "description": "Cuéntame en qué estás trabajando y veamos cómo llevarlo a una ejecución clara y sólida.",
+  "subtitle": "¿Un proyecto o un puesto en mente?",
+  "note": "Respondo en uno o dos días hábiles. Si prefieres, usa el formulario.",
   "form": {
     "name": {
       "label": "Nombre",
-      "placeholder": "Tu nombre completo"
+      "placeholder": "Nombre"
     },
     "email": {
       "label": "Email",
-      "placeholder": "tu@email.com"
+      "placeholder": "Email"
     },
     "message": {
       "label": "Mensaje",
-      "placeholder": "Cuéntame sobre tu proyecto o idea..."
+      "placeholder": "Cuéntame qué necesitas"
     },
-    "submit": "Enviar mensaje"
+    "submit": "Enviar",
+    "submitting": "Enviando"
   },
   "alternative": {
-    "title": "Contacto directo",
     "email": "erwing1394@gmail.com",
-    "copyEmailText": "Copiar correo"
+    "copyEmailText": "Copiar correo",
+    "copiedText": "Copiado"
   },
-  "success": "Mensaje enviado. Te responderé en breve.",
-  "error": "No se pudo enviar el mensaje. Intenta nuevamente."
+  "success": "Gracias. Te respondo pronto.",
+  "error": "No se pudo enviar el mensaje. Intenta nuevamente o escríbeme al correo."
 }

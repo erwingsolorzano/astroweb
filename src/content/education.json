@@ -6,7 +6,7 @@
     "start": "2012",
     "end": "2021",
     "highlights": [
-      "Mención en informática para la gestión"
+      "Mención en informática para la gestión."
     ]
   },
   {
@@ -16,17 +16,19 @@
     "start": "2022",
     "end": "2022",
     "highlights": [
-      "Duración intensiva: 40 horas"
+      "Programa intensivo de 40 horas."
     ],
     "fileUrl": "https://drive.google.com/file/d/12w-M0zTLI9AclyymdhUOOp9AT6f9ZMp5/view?usp=sharing"
   },
   {
     "institution": "HackerRank",
-    "program": "Node.js (Intermediate) Certification",
+    "program": "Node.js (Intermediate)",
     "degree": "Certificación",
     "start": "2025",
     "end": "2025",
-    "highlights": [],
+    "highlights": [
+      "Certificación de habilidades."
+    ],
     "fileUrl": "https://www.hackerrank.com/certificates/iframe/75355a42bda5"
   }
 ]
