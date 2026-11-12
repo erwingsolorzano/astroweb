@@ -51,10 +51,12 @@
 
   /*
    * Hero name. Desktop sizes come from the 1280px artboard (1200px content)
-   * and scale down with --u so the composition never overflows.
+   * and scale down with --u, capped by width (never overflows) and by height
+   * (bio, social links and CTA stay in the first screen).
    */
   .hero-name {
-    --u: min(1px, calc((100vw - 80px) / 1200));
+    --u: max(0.4px, min(1px, calc((100vw - 80px) / 1200), calc((100vh - 340px) / 560)));
+    --u: max(0.4px, min(1px, calc((100vw - 80px) / 1200), calc((100svh - 340px) / 560)));
   }
 
   .hero-first {
@@ -87,8 +89,8 @@
   }
 }
 
-/* Scroll reveal: only hides content when JS is running (html.js) */
-.js [data-reveal] {
+/* Scroll reveal: content is only hidden after the reveal script runs */
+.reveal-ready [data-reveal] {
   opacity: 0;
   transform: translateY(32px);
   transition:
@@ -97,7 +99,7 @@
   transition-delay: var(--reveal-delay, 0ms);
 }
 
-.js [data-reveal].is-revealed {
+.reveal-ready [data-reveal].is-revealed {
   opacity: 1;
   transform: none;
 }
@@ -114,7 +116,7 @@
     transition: none !important;
   }
 
-  .js [data-reveal] {
+  .reveal-ready [data-reveal] {
     opacity: 1;
     transform: none;
   }

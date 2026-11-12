@@ -53,7 +53,6 @@ const websiteSchema = generateJSONLD('WebSite', {
 
     <!-- Anton renders the hero name: preload so it shows without delay -->
     <link rel="preload" href={antonWoff2} as="font" type="font/woff2" crossorigin />
-    <script is:inline>document.documentElement.classList.add('js');</script>
     
     <!-- SEO Meta Tags -->
     <title>{seoTags.title}</title>
@@ -88,9 +87,9 @@ const websiteSchema = generateJSONLD('WebSite', {
     {gaMeasurementId && (
       <>
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}></script>
-        <script>
+        <script is:inline define:vars={{ gaMeasurementId }}>
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
+          function gtag() { window.dataLayer.push(arguments); }
           gtag('js', new Date());
           gtag('config', gaMeasurementId);
         </script>
@@ -107,27 +106,30 @@ const websiteSchema = generateJSONLD('WebSite', {
     </a>
     <slot />
 
-    <script>
+    <script is:inline>
       // Scroll-in reveal for static [data-reveal] elements (fade + rise, once).
-      // React islands use data-reveal="island" and the useReveal hook instead.
-      const targets = document.querySelectorAll<HTMLElement>('[data-reveal]:not([data-reveal="island"])');
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Content is only hidden once this script runs (html.reveal-ready), so a
+      // script failure never leaves the page invisible. React islands use
+      // data-reveal="island" and the useReveal hook instead.
+      (function () {
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion || !('IntersectionObserver' in window)) return;
 
-      if (reduceMotion || !('IntersectionObserver' in window)) {
-        targets.forEach((el) => el.classList.add('is-revealed'));
-      } else {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
+        document.documentElement.classList.add('reveal-ready');
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
               if (!entry.isIntersecting) return;
               entry.target.classList.add('is-revealed');
               observer.unobserve(entry.target);
             });
           },
-          { rootMargin: '0px 0px -8% 0px', threshold: 0.12 },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.12 }
         );
-        targets.forEach((el) => observer.observe(el));
-      }
+        document
+          .querySelectorAll('[data-reveal]:not([data-reveal="island"])')
+          .forEach(function (el) { observer.observe(el); });
+      })();
     </script>
   </body>
 </html>
