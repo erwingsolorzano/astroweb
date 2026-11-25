@@ -8,14 +8,20 @@
     "end": "Hoy",
     "current": true,
     "description": "Formo parte del equipo de ingeniería que analiza, diseña y entrega mejoras continuas para que el sistema sea más claro y eficiente.",
-    "achievements": [],
+    "achievements": [
+      "Desarrollo de funcionalidades con IA en Python y FastAPI, integrando modelos de lenguaje vía OpenRouter y entornos aislados con Daytona."
+    ],
     "technologies": [
       "React",
       "TypeScript",
       "Next.js",
       "Tailwind",
       "GraphQL",
-      "AWS"
+      "AWS",
+      "Python",
+      "FastAPI",
+      "OpenRouter",
+      "Daytona"
     ]
   },
   {
