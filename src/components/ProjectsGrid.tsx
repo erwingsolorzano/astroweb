@@ -6,12 +6,15 @@ interface Project {
   kind: string;
   description: string;
   stack: string[];
-  links: { demo?: string; github?: string };
+  links: { demo?: string; github?: string; testers?: { label: string; href: string }[] };
   image: string;
 }
 
 const projects = projectsData as Project[];
 const pad = (n: number) => String(n).padStart(2, '0');
+const pill =
+  'label flex flex-none items-center gap-2.5 whitespace-nowrap rounded-full bg-forest py-[5px] pl-4 pr-[5px] text-cream';
+const pillIcon = 'grid h-[26px] w-[26px] place-items-center rounded-full bg-crest text-forest';
 
 export default function ProjectsGrid() {
   return (
@@ -27,8 +30,12 @@ export default function ProjectsGrid() {
 
       <ul className="border-b-2 border-ink">
         {projects.map((project, index) => {
+          const testers = project.links.testers;
           const href = project.links.demo ?? project.links.github;
           const cta = project.links.demo ? 'Ver en vivo' : 'Código';
+          // A row with several links can't be a single anchor (no nested <a>).
+          const Row = testers ? 'div' : 'a';
+          const rowProps = testers ? {} : { href, target: '_blank', rel: 'noopener noreferrer' };
 
           return (
             <li
@@ -37,10 +44,8 @@ export default function ProjectsGrid() {
               style={{ '--reveal-delay': `${index * 120}ms` } as React.CSSProperties}
               className="border-t-2 border-ink"
             >
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Row
+                {...rowProps}
                 className="group grid grid-cols-1 gap-5 py-8 transition-colors duration-[250ms] hover:text-mandarin focus-visible:text-mandarin md:grid-cols-[96px_280px_minmax(0,1fr)] md:items-start md:gap-10 md:py-9"
               >
                 <span className="font-display text-[40px] leading-[0.85] text-mandarin md:text-[56px]">
@@ -69,15 +74,34 @@ export default function ProjectsGrid() {
                     <span className="text-xs font-semibold uppercase tracking-[0.06em] text-forest">
                       {project.stack.join(' · ')}
                     </span>
-                    <span className="label flex flex-none items-center gap-2.5 whitespace-nowrap rounded-full bg-forest py-[5px] pl-4 pr-[5px] text-cream">
-                      {cta}
-                      <span className="grid h-[26px] w-[26px] place-items-center rounded-full bg-crest text-forest">
-                        <ArrowIcon />
+                    {testers ? (
+                      <span className="flex flex-wrap gap-2.5">
+                        {testers.map((link) => (
+                          <a
+                            key={link.href}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`${pill} transition-colors hover:bg-mandarin focus-visible:bg-mandarin`}
+                          >
+                            {link.label}
+                            <span className={pillIcon}>
+                              <ArrowIcon />
+                            </span>
+                          </a>
+                        ))}
                       </span>
-                    </span>
+                    ) : (
+                      <span className={pill}>
+                        {cta}
+                        <span className={pillIcon}>
+                          <ArrowIcon />
+                        </span>
+                      </span>
+                    )}
                   </div>
                 </div>
-              </a>
+              </Row>
             </li>
           );
         })}

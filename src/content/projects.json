@@ -1,5 +1,30 @@
 [
   {
+    "name": "Platalog",
+    "kind": "App Android · Prueba cerrada",
+    "description": "Registra tus gastos automáticamente a partir de las notificaciones de tu banco. Todo queda cifrado en tu teléfono. ¿Quieres ser tester? Únete al grupo y activa la prueba en Google Play.",
+    "stack": [
+      "Kotlin",
+      "Jetpack Compose",
+      "Room",
+      "SQLCipher"
+    ],
+    "links": {
+      "testers": [
+        {
+          "label": "1. Unirme al grupo",
+          "href": "https://groups.google.com/g/platalog-testers"
+        },
+        {
+          "label": "2. Activar prueba",
+          "href": "https://play.google.com/apps/testing/lat.ecudev.platalog"
+        }
+      ]
+    },
+    "image": "./platalog.png",
+    "featured": true
+  },
+  {
     "name": "Weddin",
     "kind": "Producto",
     "description": "Asistente para organizar una boda: invitados, presupuesto y planificación en un solo lugar.",
@@ -14,22 +39,6 @@
     },
     "image": "./wedder.png",
     "featured": true
-  },
-  {
-    "name": "El Juego del Impostor",
-    "kind": "Juego",
-    "description": "Juego de deducción social para jugar pasando el teléfono. Roles secretos, votaciones y cronómetro de debate para hasta 12 jugadores, con estética CRT retro.",
-    "stack": [
-      "React",
-      "Vite",
-      "Material UI",
-      "GSAP"
-    ],
-    "links": {
-      "demo": "https://elimpostor-juego.vercel.app/"
-    },
-    "image": "./impostor.png",
-    "featured": false
   },
   {
     "name": "AstroWeb",
